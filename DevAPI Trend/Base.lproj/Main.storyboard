@@ -16,7 +16,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="Gfq-eE-RMJ"/>
                     <connections>
-                        <segue destination="YSo-Qs-kar" kind="showDetail" identifier="loadWeb" id="TNR-rg-j5k"/>
+                        <segue destination="NJL-ox-jSn" kind="show" identifier="loadWeb" action="showDetailViewController:sender:" id="5R4-MD-Li2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uWG-jH-mW2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -39,9 +39,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="erx-Eu-5ib" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3015" y="314"/>
+            <point key="canvasLocation" x="2092" y="325"/>
         </scene>
-        <!--Cocoa Pod View Controller-->
+        <!--CocoaPods-->
         <scene sceneID="Dn5-tM-Rlb">
             <objects>
                 <viewController id="3GU-SS-zrS" customClass="CocoaPodViewController" customModule="DevAPI_Trend" customModuleProvider="target" sceneMemberID="viewController">
@@ -54,10 +54,12 @@
                             <outlet property="delegate" destination="3GU-SS-zrS" id="L5u-g8-26o"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="gzI-lj-Y0j"/>
+                    <navigationItem key="navigationItem" title="CocoaPods" id="gzI-lj-Y0j">
+                        <barButtonItem key="backBarButtonItem" title="&lt;" id="soR-I1-M1F"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="eiv-Rb-ghp" id="DZS-Cg-0mr"/>
-                        <segue destination="YSo-Qs-kar" kind="showDetail" identifier="loadWeb" action="showViewController:sender:" id="oeD-sZ-nkL"/>
+                        <segue destination="NJL-ox-jSn" kind="show" identifier="loadWeb" id="CAa-SO-WgL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Wg-7Y-Elk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -120,26 +122,8 @@
             </objects>
             <point key="canvasLocation" x="437" y="648"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="2bx-sh-rhA">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YSo-Qs-kar" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zNT-dE-YgE">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="NJL-ox-jSn" kind="relationship" relationship="rootViewController" id="hJ1-eD-EO2"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TTR-9X-CMQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2203" y="314"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="TNR-rg-j5k"/>
+        <segue reference="CAa-SO-WgL"/>
     </inferredMetricsTieBreakers>
 </document>

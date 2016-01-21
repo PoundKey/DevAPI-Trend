@@ -16,7 +16,16 @@ class WebPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         webView.loadRequest(request)
+    }
+        
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
     }
 
 }

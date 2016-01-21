@@ -10,6 +10,8 @@ import UIKit
 
 class APICell: UITableViewCell {
     
+    var url: String?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

@@ -35,9 +35,16 @@ class CocoaPodViewController: UIViewController {
         super.didReceiveMemoryWarning()
 
     }
+    
+    
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
+        let cell = sender as! APICell
+        let url = NSURL(string: cell.url!)
+        let controller = segue.destinationViewController as! WebPageViewController
+        controller.request = NSURLRequest(URL: url!)
+        controller.hidesBottomBarWhenPushed = true
+        controller.title = cell.title.text
     }
     
     func initViewList() {
@@ -133,6 +140,7 @@ extension CocoaPodViewController: UITableViewDataSource, UITableViewDelegate {
         cell.title.text = APIitem.title
         cell.detail.text = APIitem.detail
         cell.star.text = "Star: \(APIitem.star)"
+        cell.url = APIitem.url
         return cell
     }
     
@@ -165,7 +173,10 @@ extension CocoaPodViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        let selectedCell = self.tableView.cellForRowAtIndexPath(indexPath) as! APICell
+        if let _ = selectedCell.url {
+            performSegueWithIdentifier("loadWeb", sender: selectedCell)
+        }
     }
 }
 
