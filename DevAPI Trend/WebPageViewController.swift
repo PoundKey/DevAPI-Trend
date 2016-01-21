@@ -16,10 +16,12 @@ class WebPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         webView.loadRequest(request)
     }
         
+    @IBAction func goBack(sender: AnyObject) {
+        webView.goBack()
+    }
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }

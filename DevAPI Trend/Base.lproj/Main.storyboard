@@ -32,7 +32,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                     </webView>
-                    <navigationItem key="navigationItem" id="0yE-ny-vNN"/>
+                    <navigationItem key="navigationItem" id="0yE-ny-vNN">
+                        <barButtonItem key="rightBarButtonItem" systemItem="reply" id="8Wa-K1-cio">
+                            <connections>
+                                <action selector="goBack:" destination="NJL-ox-jSn" id="6SG-1g-wGx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="webView" destination="EIH-8D-aMX" id="aDC-fS-vQX"/>
                     </connections>
