@@ -55,7 +55,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="CocoaPods" id="gzI-lj-Y0j">
-                        <barButtonItem key="backBarButtonItem" title="&lt;" id="soR-I1-M1F"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="soR-I1-M1F"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="eiv-Rb-ghp" id="DZS-Cg-0mr"/>
