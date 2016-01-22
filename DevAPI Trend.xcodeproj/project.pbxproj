@@ -18,8 +18,8 @@
 		76A98C3E1C4CC0390010199F /* DevAPI_TrendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A98C3D1C4CC0390010199F /* DevAPI_TrendTests.swift */; };
 		76AFDC6B1C50B52D000369E0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76AFDC6A1C50B52D000369E0 /* Alamofire.framework */; };
 		76AFDC6C1C50B52D000369E0 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76AFDC6A1C50B52D000369E0 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		76AFDC721C5172E9000369E0 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76AFDC6E1C5172CF000369E0 /* SVProgressHUD.framework */; };
-		76AFDC731C5172E9000369E0 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76AFDC6E1C5172CF000369E0 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		76AFDC781C524D83000369E0 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76AFDC771C524D83000369E0 /* SVProgressHUD.framework */; };
+		76AFDC791C524D83000369E0 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76AFDC771C524D83000369E0 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		76DDDDA71C4F41D700670299 /* NpmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DDDDA61C4F41D700670299 /* NpmViewController.swift */; };
 		76DDDDA91C4F41EE00670299 /* GitHubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DDDDA81C4F41EE00670299 /* GitHubViewController.swift */; };
 		76DDDDE71C4F43D200670299 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DDDDE61C4F43D200670299 /* SwiftyJSON.swift */; };
@@ -45,7 +45,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				76AFDC731C5172E9000369E0 /* SVProgressHUD.framework in Embed Frameworks */,
+				76AFDC791C524D83000369E0 /* SVProgressHUD.framework in Embed Frameworks */,
 				7611BFA21C50B1B40059A3ED /* Kanna.framework in Embed Frameworks */,
 				76AFDC6C1C50B52D000369E0 /* Alamofire.framework in Embed Frameworks */,
 			);
@@ -68,8 +68,8 @@
 		76A98C3D1C4CC0390010199F /* DevAPI_TrendTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevAPI_TrendTests.swift; sourceTree = "<group>"; };
 		76A98C3F1C4CC0390010199F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76AFDC6A1C50B52D000369E0 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		76AFDC6E1C5172CF000369E0 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = "<group>"; };
 		76AFDC741C5174D5000369E0 /* DevAPI Trend-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DevAPI Trend-Bridging-Header.h"; sourceTree = "<group>"; };
+		76AFDC771C524D83000369E0 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = ../Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		76DDDDA61C4F41D700670299 /* NpmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NpmViewController.swift; sourceTree = "<group>"; };
 		76DDDDA81C4F41EE00670299 /* GitHubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubViewController.swift; sourceTree = "<group>"; };
 		76DDDDE61C4F43D200670299 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76AFDC721C5172E9000369E0 /* SVProgressHUD.framework in Frameworks */,
+				76AFDC781C524D83000369E0 /* SVProgressHUD.framework in Frameworks */,
 				7611BFA11C50B1B40059A3ED /* Kanna.framework in Frameworks */,
 				76AFDC6B1C50B52D000369E0 /* Alamofire.framework in Frameworks */,
 			);
@@ -157,7 +157,7 @@
 		76DDDDEB1C4F733300670299 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				76AFDC6E1C5172CF000369E0 /* SVProgressHUD.framework */,
+				76AFDC771C524D83000369E0 /* SVProgressHUD.framework */,
 				7611BFA01C50B1B40059A3ED /* Kanna.framework */,
 				76AFDC6A1C50B52D000369E0 /* Alamofire.framework */,
 				76DDDDE61C4F43D200670299 /* SwiftyJSON.swift */,
