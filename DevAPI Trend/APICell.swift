@@ -17,6 +17,6 @@ class APICell: UITableViewCell {
     }
     
     @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var star: UILabel!
+    @IBOutlet weak var info: UILabel!
     @IBOutlet weak var detail: UILabel!
 }

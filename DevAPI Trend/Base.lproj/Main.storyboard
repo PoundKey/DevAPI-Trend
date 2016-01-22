@@ -16,6 +16,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="Gfq-eE-RMJ"/>
                     <connections>
+                        <outlet property="tableView" destination="n7L-Fn-wul" id="hNv-T9-hqB"/>
                         <segue destination="NJL-ox-jSn" kind="show" identifier="loadWeb" action="showDetailViewController:sender:" id="5R4-MD-Li2"/>
                     </connections>
                 </viewController>
@@ -82,8 +83,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="0Zz-gh-BZe" kind="relationship" relationship="viewControllers" id="ZhW-SK-b1Q"/>
                         <segue destination="OuA-a9-mL9" kind="relationship" relationship="viewControllers" id="yQw-34-HN0"/>
+                        <segue destination="0Zz-gh-BZe" kind="relationship" relationship="viewControllers" id="ZhW-SK-b1Q"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kav-d9-aUF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -130,6 +131,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="CAa-SO-WgL"/>
+        <segue reference="5R4-MD-Li2"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -24,9 +24,6 @@ class CocoaPodViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "CocoaPods"
-        
-        tableView.registerNib(UINib(nibName: "APICell", bundle:nil), forCellReuseIdentifier: "cell")
-        
         initViewList()
     
     }
@@ -48,6 +45,7 @@ class CocoaPodViewController: UIViewController {
     }
     
     func initViewList() {
+        tableView.registerNib(UINib(nibName: "APICell", bundle:nil), forCellReuseIdentifier: "cell")
         fetchHTML()
     }
     
@@ -97,7 +95,8 @@ class CocoaPodViewController: UIViewController {
                 let star = info[2].text, let detail = info[3].text {
                     // Gather the Github Link for the CocoaPod.
                     if let anchor = info[1].at_css("a"), link = anchor["href"] {
-                        let APIitem = APIModel(title: title, detail: detail, url: link, star: Int(star)!)
+                        let APIitem = APIModel(title: title, detail: detail, url: link)
+                        APIitem.star = Int(star)!
                         trend.append(APIitem)
                     }
             }
@@ -135,11 +134,11 @@ extension CocoaPodViewController: UITableViewDataSource, UITableViewDelegate {
         case 1:
             APIitem = trendOverall[indexPath.row]
         default:
-            APIitem = APIModel(title: "nil", detail: "null", url: "undefined", star: 0)
+            APIitem = APIModel(title: "nil", detail: "null", url: "undefined")
         }
         cell.title.text = APIitem.title
         cell.detail.text = APIitem.detail
-        cell.star.text = "Star: \(APIitem.star)"
+        cell.info.text = "Star: \(APIitem.star)"
         cell.url = APIitem.url
         return cell
     }

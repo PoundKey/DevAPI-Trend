@@ -18,6 +18,8 @@
 		76A98C3E1C4CC0390010199F /* DevAPI_TrendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A98C3D1C4CC0390010199F /* DevAPI_TrendTests.swift */; };
 		76AFDC6B1C50B52D000369E0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76AFDC6A1C50B52D000369E0 /* Alamofire.framework */; };
 		76AFDC6C1C50B52D000369E0 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76AFDC6A1C50B52D000369E0 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		76AFDC721C5172E9000369E0 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76AFDC6E1C5172CF000369E0 /* SVProgressHUD.framework */; };
+		76AFDC731C5172E9000369E0 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76AFDC6E1C5172CF000369E0 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		76DDDDA71C4F41D700670299 /* NpmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DDDDA61C4F41D700670299 /* NpmViewController.swift */; };
 		76DDDDA91C4F41EE00670299 /* GitHubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DDDDA81C4F41EE00670299 /* GitHubViewController.swift */; };
 		76DDDDE71C4F43D200670299 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DDDDE61C4F43D200670299 /* SwiftyJSON.swift */; };
@@ -43,6 +45,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				76AFDC731C5172E9000369E0 /* SVProgressHUD.framework in Embed Frameworks */,
 				7611BFA21C50B1B40059A3ED /* Kanna.framework in Embed Frameworks */,
 				76AFDC6C1C50B52D000369E0 /* Alamofire.framework in Embed Frameworks */,
 			);
@@ -65,6 +68,8 @@
 		76A98C3D1C4CC0390010199F /* DevAPI_TrendTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevAPI_TrendTests.swift; sourceTree = "<group>"; };
 		76A98C3F1C4CC0390010199F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76AFDC6A1C50B52D000369E0 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		76AFDC6E1C5172CF000369E0 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = "<group>"; };
+		76AFDC741C5174D5000369E0 /* DevAPI Trend-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DevAPI Trend-Bridging-Header.h"; sourceTree = "<group>"; };
 		76DDDDA61C4F41D700670299 /* NpmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NpmViewController.swift; sourceTree = "<group>"; };
 		76DDDDA81C4F41EE00670299 /* GitHubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubViewController.swift; sourceTree = "<group>"; };
 		76DDDDE61C4F43D200670299 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
@@ -78,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76AFDC721C5172E9000369E0 /* SVProgressHUD.framework in Frameworks */,
 				7611BFA11C50B1B40059A3ED /* Kanna.framework in Frameworks */,
 				76AFDC6B1C50B52D000369E0 /* Alamofire.framework in Frameworks */,
 			);
@@ -117,9 +123,9 @@
 				76DDDDEA1C4F732300670299 /* Model */,
 				76A98C281C4CC0390010199F /* AppDelegate.swift */,
 				76DDDE841C4F89D700670299 /* CocoaPodViewController.swift */,
+				76DDDDA61C4F41D700670299 /* NpmViewController.swift */,
 				76DDDDA81C4F41EE00670299 /* GitHubViewController.swift */,
 				7694B8ED1C50A86B0053DE20 /* WebPageViewController.swift */,
-				76DDDDA61C4F41D700670299 /* NpmViewController.swift */,
 				76A98C2C1C4CC0390010199F /* Main.storyboard */,
 				76A98C2F1C4CC0390010199F /* Assets.xcassets */,
 				76A98C311C4CC0390010199F /* LaunchScreen.storyboard */,
@@ -151,9 +157,11 @@
 		76DDDDEB1C4F733300670299 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				76AFDC6E1C5172CF000369E0 /* SVProgressHUD.framework */,
 				7611BFA01C50B1B40059A3ED /* Kanna.framework */,
 				76AFDC6A1C50B52D000369E0 /* Alamofire.framework */,
 				76DDDDE61C4F43D200670299 /* SwiftyJSON.swift */,
+				76AFDC741C5174D5000369E0 /* DevAPI Trend-Bridging-Header.h */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -406,7 +414,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "DevAPI Trend/Info.plist";
@@ -415,6 +423,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dyl.herokuapp.DevAPI-Trend";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "DevAPI Trend/DevAPI Trend-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -423,7 +433,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "DevAPI Trend/Info.plist";
@@ -432,6 +442,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dyl.herokuapp.DevAPI-Trend";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "DevAPI Trend/DevAPI Trend-Bridging-Header.h";
 			};
 			name = Release;
 		};

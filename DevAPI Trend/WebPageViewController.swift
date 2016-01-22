@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class WebPageViewController: UIViewController {
 
@@ -16,7 +17,14 @@ class WebPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setSVHubStyle()
+        webView.delegate = self
         webView.loadRequest(request)
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        SVProgressHUD.dismiss()
     }
         
     @IBAction func goBack(sender: AnyObject) {
@@ -29,5 +37,26 @@ class WebPageViewController: UIViewController {
     override func prefersStatusBarHidden() -> Bool {
         return false
     }
+    
+    func setSVHubStyle() {
+        //SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.Black)
+        SVProgressHUD.setBackgroundColor(UIColor(red: 0, green: 0, blue: 0, alpha: 0.75))
+        SVProgressHUD.setForegroundColor(UIColor(red: 1, green: 1, blue: 1, alpha: 1))
+    }
+}
 
+extension WebPageViewController: UIWebViewDelegate {
+    
+    func webViewDidStartLoad(webView: UIWebView) {
+        SVProgressHUD.showWithStatus("Loading...")
+    }
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        SVProgressHUD.showSuccessWithStatus("Loaded!")
+        //SVProgressHUD.dismiss()
+    }
+    
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+        SVProgressHUD.showInfoWithStatus("Reuqest Failed.")
+    }
 }

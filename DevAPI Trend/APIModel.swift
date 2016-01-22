@@ -13,13 +13,13 @@ class APIModel {
     let title: String
     let detail: String
     let url: String
-    let star: Int
+    var star: Int = 0
+    var version: String = "1.0.0"
     
-    init(title: String, detail: String, url: String, star: Int) {
+    init(title: String, detail: String, url: String) {
         self.title  = title
         self.detail = detail
         self.url    = url
-        self.star   = star
     }
     
     func describe() {
