@@ -30,6 +30,28 @@
             </objects>
             <point key="canvasLocation" x="1194" y="196"/>
         </scene>
+        <!--GitHub Repo-->
+        <scene sceneID="SCy-0V-Wjt">
+            <objects>
+                <viewController id="RfU-dq-pMS" customClass="GitHubViewController" customModule="DevAPI_Trend" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RNY-mf-sGE"/>
+                        <viewControllerLayoutGuide type="bottom" id="oaC-rm-DVP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mOt-iT-xCM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="GitHub Repo" id="v1F-3w-CFq"/>
+                    <connections>
+                        <segue destination="NJL-ox-jSn" kind="show" identifier="loadWeb" id="uGQ-O4-MqP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oLW-Zc-nE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1189" y="922"/>
+        </scene>
         <!--Web Page View Controller-->
         <scene sceneID="bP8-mO-YHy">
             <objects>
@@ -89,32 +111,14 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="jUO-Qw-KKa" kind="relationship" relationship="viewControllers" id="rFb-pO-woi"/>
                         <segue destination="OuA-a9-mL9" kind="relationship" relationship="viewControllers" id="yQw-34-HN0"/>
                         <segue destination="0Zz-gh-BZe" kind="relationship" relationship="viewControllers" id="ZhW-SK-b1Q"/>
-                        <segue destination="jUO-Qw-KKa" kind="relationship" relationship="viewControllers" id="rFb-pO-woi"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kav-d9-aUF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-400" y="246"/>
-        </scene>
-        <!--GitHub Repos-->
-        <scene sceneID="Upl-d7-qib">
-            <objects>
-                <viewController id="jln-Kl-IfF" customClass="GitHubViewController" customModule="DevAPI_Trend" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="GzQ-Ar-R3Q">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="GitHub Repos" id="swO-5p-vWb"/>
-                    <connections>
-                        <segue destination="NJL-ox-jSn" kind="show" identifier="loadWeb" id="4jJ-jS-Auc"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3ez-6I-wWY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1170" y="922"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="asK-er-Wef">
@@ -166,7 +170,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="jln-Kl-IfF" kind="relationship" relationship="rootViewController" id="cmb-OC-WE9"/>
+                        <segue destination="RfU-dq-pMS" kind="relationship" relationship="rootViewController" id="0dQ-SJ-fkx"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jsY-7c-Sf3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -175,6 +179,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5R4-MD-Li2"/>
+        <segue reference="uGQ-O4-MqP"/>
     </inferredMetricsTieBreakers>
 </document>
