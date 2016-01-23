@@ -30,9 +30,11 @@ class WebPageViewController: UIViewController {
     @IBAction func goBack(sender: AnyObject) {
         webView.goBack()
     }
+    /**
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
+*/
     
     override func prefersStatusBarHidden() -> Bool {
         return false

@@ -16,22 +16,19 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nx2-de-8TD">
-                        <rect key="frame" x="8" y="9" width="44" height="21"/>
+                        <rect key="frame" x="8" y="9" width="44" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0E-mH-e6F">
-                        <rect key="frame" x="8" y="52" width="279" height="17"/>
+                        <rect key="frame" x="8" y="53" width="279" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.81176470590000005" green="0.80784313730000001" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SaX-60-9KM">
-                        <rect key="frame" x="8" y="29" width="76" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="76" id="bbV-NP-HRl"/>
-                        </constraints>
+                        <rect key="frame" x="8" y="29" width="33" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -46,7 +43,6 @@
                     <constraint firstItem="K0E-mH-e6F" firstAttribute="top" secondItem="Nx2-de-8TD" secondAttribute="bottom" constant="22" id="Ayy-AE-dOk"/>
                     <constraint firstItem="Nx2-de-8TD" firstAttribute="top" secondItem="npd-vr-vgm" secondAttribute="topMargin" constant="1" id="Su4-kK-ONj"/>
                     <constraint firstItem="SaX-60-9KM" firstAttribute="top" secondItem="npd-vr-vgm" secondAttribute="topMargin" constant="21" id="eMk-fr-R9K"/>
-                    <constraint firstItem="SaX-60-9KM" firstAttribute="centerY" secondItem="npd-vr-vgm" secondAttribute="centerY" id="elN-IG-jeQ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

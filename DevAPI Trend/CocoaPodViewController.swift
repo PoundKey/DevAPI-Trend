@@ -17,7 +17,6 @@ class CocoaPodViewController: UIViewController {
     var trendDaily = [APIModel]()
     var trendOverall = [APIModel]()
    
-    var responseString: String?
     var htmlPageTitle: String?
     var htmlPageLastUpdated: String?
     
@@ -54,18 +53,15 @@ class CocoaPodViewController: UIViewController {
         Alamofire.request(.GET, url).responseString { res in
             switch res.result {
             case .Success(let value):
-                //print("Successful in retrieving html page")
-                self.responseString = value
-                self.parseHTML()
+                self.parseHTML(value)
             case .Failure:
                 print("No Internet Connection Error: DX21")
             }
         }
     }
     
-    func parseHTML() {
-        if let html = responseString,
-            doc = Kanna.HTML(html: html, encoding: NSUTF8StringEncoding) {
+    func parseHTML(html: String) {
+        if let doc = Kanna.HTML(html: html, encoding: NSUTF8StringEncoding) {
                 setHtmlPageMeta(doc)
                 for (index, table) in doc.css("tbody").enumerate() {
                     switch index {
@@ -77,8 +73,8 @@ class CocoaPodViewController: UIViewController {
                         break
                     }
                 }
+                self.tableView.reloadData()
         }
-        self.tableView.reloadData()
     }
     
     func setHtmlPageMeta(doc: HTMLDocument) {

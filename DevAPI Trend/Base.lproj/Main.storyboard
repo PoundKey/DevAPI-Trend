@@ -5,19 +5,25 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--Npm View Controller-->
+        <!--Node Packages-->
         <scene sceneID="RRX-R6-Gdy">
             <objects>
                 <viewController id="lbS-Zy-7He" customClass="NpmViewController" customModule="DevAPI_Trend" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="n7L-Fn-wul">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="n7L-Fn-wul">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="lbS-Zy-7He" id="dLg-7T-PHV"/>
+                            <outlet property="delegate" destination="lbS-Zy-7He" id="L1S-xc-qBf"/>
+                        </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Gfq-eE-RMJ"/>
+                    <navigationItem key="navigationItem" title="Node Packages" id="Gfq-eE-RMJ">
+                        <barButtonItem key="backBarButtonItem" title=" " id="SZ6-pm-UYp"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="n7L-Fn-wul" id="hNv-T9-hqB"/>
-                        <segue destination="NJL-ox-jSn" kind="show" identifier="loadWeb" action="showDetailViewController:sender:" id="5R4-MD-Li2"/>
+                        <segue destination="NJL-ox-jSn" kind="show" identifier="loadWeb" id="5R4-MD-Li2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uWG-jH-mW2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -114,7 +120,7 @@
         <scene sceneID="TC6-Ot-m9A">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OuA-a9-mL9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="xaA-Ih-BOP"/>
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="xaA-Ih-BOP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ltu-jV-Vru">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
