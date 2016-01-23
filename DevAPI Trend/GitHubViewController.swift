@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class GitHubViewController: UIViewController {
 
@@ -14,6 +15,10 @@ class GitHubViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    func initViewList() {
+        let swiftRepo = "https://api.github.com/search/repositories?q=language:swift+stars:>300+created:>2014-06-01&sort=stars&order=desc"
     }
 
     override func didReceiveMemoryWarning() {
