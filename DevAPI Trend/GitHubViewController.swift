@@ -12,7 +12,8 @@ class GitHubViewController: UIViewController {
     
     var topBarItems = []
     var carbonTabSwipeNavigation: CarbonTabSwipeNavigation = CarbonTabSwipeNavigation()
-    
+    var currentController: GitHubAPIController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         initViewList()
@@ -22,9 +23,15 @@ class GitHubViewController: UIViewController {
         topBarItems = ["Swift", "JavaScript", "Overall"]
         carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: topBarItems as [AnyObject], delegate: self)
         carbonTabSwipeNavigation.insertIntoRootViewController(self)
+        self.currentController = self.carbonTabSwipeNavigation.viewControllers[0] as? GitHubAPIController
         self.style()
     }
 
+    @IBAction func srollToTop(sender: AnyObject) {
+        if let tableView = self.currentController?.tableView {
+            tableView.setContentOffset(CGPointZero, animated:true)
+        }
+    }
     
     func style() {
         let color: UIColor = UIColor(red: 24.0 / 255, green: 75.0 / 255, blue: 152.0 / 255, alpha: 1)
@@ -71,9 +78,6 @@ extension GitHubViewController: CarbonTabSwipeNavigationDelegate {
     }
     
     func carbonTabSwipeNavigation(carbonTabSwipeNavigation: CarbonTabSwipeNavigation, didMoveAtIndex index: UInt) {
-        switch index {
-        default:
-            break
-        }
+        self.currentController = self.carbonTabSwipeNavigation.viewControllers[index] as? GitHubAPIController
     }
 }

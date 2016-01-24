@@ -45,6 +45,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="GitHub Repo" id="v1F-3w-CFq">
                         <barButtonItem key="backBarButtonItem" title=" " id="Cg0-NM-PqY"/>
+                        <barButtonItem key="rightBarButtonItem" image="scrollUp" id="btL-Md-2yp">
+                            <connections>
+                                <action selector="srollToTop:" destination="RfU-dq-pMS" id="Ljg-lt-Rjf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="H0n-c5-t14" kind="show" identifier="GitHub" id="4TB-xa-rk6"/>
@@ -101,6 +106,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="rxv-c3-xUS"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="JoM-b2-Kd3" id="BuX-Cc-kiq"/>
                         <segue destination="NJL-ox-jSn" kind="show" identifier="loadWeb" id="lhl-UR-yan"/>
@@ -195,6 +204,7 @@
         <!--GitHub-->
         <scene sceneID="nBW-Ku-YjJ">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jsY-7c-Sf3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jUO-Qw-KKa" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="GitHub" image="GitHub" id="piv-iZ-scU"/>
                     <toolbarItems/>
@@ -207,15 +217,15 @@
                         <segue destination="RfU-dq-pMS" kind="relationship" relationship="rootViewController" id="0dQ-SJ-fkx"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jsY-7c-Sf3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="424" y="922"/>
+            <point key="canvasLocation" x="419" y="960"/>
         </scene>
     </scenes>
     <resources>
         <image name="GitHub" width="28" height="28"/>
         <image name="Node" width="28" height="28"/>
         <image name="Swift" width="28" height="28"/>
+        <image name="scrollUp" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="lhl-UR-yan"/>

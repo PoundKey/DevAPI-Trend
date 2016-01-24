@@ -20,12 +20,14 @@ class GitHubAPIController: UIViewController {
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         initViewList()
     }
-    
+
     func initViewList() {
         tableView.registerNib(UINib(nibName: "DevCell", bundle:nil), forCellReuseIdentifier: "cell")
+        tableView.scrollsToTop = true
         fetchJSON()
     }
     
@@ -62,11 +64,11 @@ class GitHubAPIController: UIViewController {
     func parseJSON(items: JSON) {
 
         for (_, item) in items {
-            let title   = item["name"].stringValue
-            let star   = item["stargazers_count"].intValue
-            let detail = item["description"].stringValue
-            let url    = item["html_url"].stringValue
-            let APIitem = APIModel(title: title, detail: detail, url: url)
+            let title    = item["name"].stringValue
+            let star     = item["stargazers_count"].intValue
+            let detail   = item["description"].stringValue
+            let url      = item["html_url"].stringValue
+            let APIitem  = APIModel(title: title, detail: detail, url: url)
             APIitem.star = star
             trendOverall.append(APIitem)
         }
