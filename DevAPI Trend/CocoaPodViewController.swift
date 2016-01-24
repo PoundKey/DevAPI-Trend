@@ -35,7 +35,7 @@ class CocoaPodViewController: UIViewController {
     
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let cell = sender as! APICell
+        let cell = sender as! DevCell
         let url = NSURL(string: cell.url!)
         let controller = segue.destinationViewController as! WebPageViewController
         controller.request = NSURLRequest(URL: url!)
@@ -44,7 +44,7 @@ class CocoaPodViewController: UIViewController {
     }
     
     func initViewList() {
-        tableView.registerNib(UINib(nibName: "APICell", bundle:nil), forCellReuseIdentifier: "cell")
+        tableView.registerNib(UINib(nibName: "DevCell", bundle:nil), forCellReuseIdentifier: "cell")
         fetchHTML()
     }
     
@@ -122,7 +122,7 @@ extension CocoaPodViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! APICell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! DevCell
         let APIitem: APIModel
         switch indexPath.section {
         case 0:
@@ -140,7 +140,7 @@ extension CocoaPodViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 80
+        return 136
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -168,7 +168,7 @@ extension CocoaPodViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selectedCell = self.tableView.cellForRowAtIndexPath(indexPath) as! APICell
+        let selectedCell = self.tableView.cellForRowAtIndexPath(indexPath) as! DevCell
         if let _ = selectedCell.url {
             performSegueWithIdentifier("loadWeb", sender: selectedCell)
         }
@@ -193,7 +193,7 @@ extension CocoaPodViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! APICell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! DevCell
         
         let APIitem: APIModel
         switch indexPath.section {
