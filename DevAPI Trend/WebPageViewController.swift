@@ -17,7 +17,6 @@ class WebPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setSVHubStyle()
         webView.delegate = self
         webView.loadRequest(request)
         
@@ -40,11 +39,6 @@ class WebPageViewController: UIViewController {
         return false
     }
     
-    func setSVHubStyle() {
-        //SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.Black)
-        SVProgressHUD.setBackgroundColor(UIColor(red: 0, green: 0, blue: 0, alpha: 0.75))
-        SVProgressHUD.setForegroundColor(UIColor(red: 1, green: 1, blue: 1, alpha: 1))
-    }
 }
 
 extension WebPageViewController: UIWebViewDelegate {

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 class GitHubViewController: UIViewController {
     
@@ -17,7 +16,6 @@ class GitHubViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initViewList()
-        // Do any additional setup after loading the view.
     }
     
     func initViewList() {
@@ -25,7 +23,6 @@ class GitHubViewController: UIViewController {
         carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: topBarItems as [AnyObject], delegate: self)
         carbonTabSwipeNavigation.insertIntoRootViewController(self)
         self.style()
-        //let swiftRepo = "https://api.github.com/search/repositories?q=language:swift+stars:>300+created:>2014-06-01&sort=stars&order=desc"
     }
 
     
@@ -47,33 +44,36 @@ class GitHubViewController: UIViewController {
             carbonTabSwipeNavigation.carbonSegmentedControl!.setWidth(width, forSegmentAtIndex: i)
         }
         
-        carbonTabSwipeNavigation.setNormalColor(UIColor.blackColor().colorWithAlphaComponent(0.6), font: UIFont.boldSystemFontOfSize(15))
+        carbonTabSwipeNavigation.setNormalColor(UIColor.blackColor().colorWithAlphaComponent(0.6))
         carbonTabSwipeNavigation.setSelectedColor(color, font: UIFont.boldSystemFontOfSize(15))
         
-    }
-    
-    
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
 }
 
 extension GitHubViewController: CarbonTabSwipeNavigationDelegate {
     func carbonTabSwipeNavigation(carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAtIndex index: UInt) -> UIViewController {
-        switch index {
-        default:
-            return UIViewController()
-        }
+        let controller = self.storyboard!.instantiateViewControllerWithIdentifier("GitHubAPIController") as! GitHubAPIController
         
+        switch index {
+        case 0:
+            let swiftRepo = "https://api.github.com/search/repositories?q=language:swift+stars:>300+created:>2014-06-01&sort=stars&order=desc"
+            controller.request = swiftRepo
+        case 1:
+            let javaScriptRepo = "https://api.github.com/search/repositories?q=language:javascript+stars:>1000+created:>2015-01-01&sort=stars&order=desc"
+            controller.request = javaScriptRepo
+        case 2:
+            let overallRepo = "https://api.github.com/search/repositories?q=stars:>1000+created:>2015-01-01&sort=stars&order=desc"
+            controller.request = overallRepo
+        default:
+            controller.request = ""
+        }
+        return controller
     }
     
     func carbonTabSwipeNavigation(carbonTabSwipeNavigation: CarbonTabSwipeNavigation, didMoveAtIndex index: UInt) {
         switch index {
         default:
-            self.navigationItem.title = "CarbonKit"
+            break
         }
     }
 }

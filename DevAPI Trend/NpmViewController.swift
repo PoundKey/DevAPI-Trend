@@ -20,12 +20,12 @@ class NpmViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Node Packages"
+        self.navigationItem.title = "Node Packages"
         initViewList()
     }
     
     func initViewList() {
-        tableView.registerNib(UINib(nibName: "APICell", bundle:nil), forCellReuseIdentifier: "cell")
+        tableView.registerNib(UINib(nibName: "DevCell", bundle:nil), forCellReuseIdentifier: "cell")
         let homePage = "https://www.npmjs.com/browse/star"
         fetchHTML(homePage)
     }
@@ -82,15 +82,10 @@ class NpmViewController: UIViewController {
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let cell = sender as! APICell
+        let cell = sender as! DevCell
         let url = NSURL(string: cell.url!)
         let controller = segue.destinationViewController as! WebPageViewController
         controller.request = NSURLRequest(URL: url!)
@@ -110,7 +105,7 @@ extension NpmViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! APICell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! DevCell
         let APIitem: APIModel = trendOverall[indexPath.row]
         cell.title.text = APIitem.title
         cell.detail.text = APIitem.detail
@@ -119,8 +114,9 @@ extension NpmViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 80
+        return 120
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -133,7 +129,7 @@ extension NpmViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selectedCell = self.tableView.cellForRowAtIndexPath(indexPath) as! APICell
+        let selectedCell = self.tableView.cellForRowAtIndexPath(indexPath) as! DevCell
         if let _ = selectedCell.url {
             performSegueWithIdentifier("loadWeb", sender: selectedCell)
         }
