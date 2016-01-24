@@ -32,7 +32,7 @@ class GitHubAPIController: UIViewController {
     func fetchJSON() {
         
         // A closure that tackles the problem of default encoding ("+" and ">") provided by Alamofire,
-        // unfortunately GitHub search API does not like it.
+        // unfortunately GitHub search API does not like it, therefore customization is provided.
         let custom: (URLRequestConvertible, parameters: [String: AnyObject]?) -> (NSMutableURLRequest, NSError?) = { req, param in
             let request = req.URLRequest.mutableCopy() as! NSMutableURLRequest
             let baseURL = (request.URL?.absoluteString)!
@@ -51,11 +51,27 @@ class GitHubAPIController: UIViewController {
             switch res.result {
             case .Success(let value):
                 let json = JSON(value)
-                print(json)
+                let items = json["items"]
+                self.parseJSON(items)
             case .Failure:
                 print("No Internet Connection Error: DX21")
             }
         }
+    }
+    
+    func parseJSON(items: JSON) {
+
+        for (_, item) in items {
+            let title   = item["name"].stringValue
+            let star   = item["stargazers_count"].intValue
+            let detail = item["description"].stringValue
+            let url    = item["url"].stringValue
+            let APIitem = APIModel(title: title, detail: detail, url: url)
+            APIitem.star = star
+            trendOverall.append(APIitem)
+        }
+        // Increase the page count
+        self.tableView.reloadData()
     }
     
     func generateQuery(dict: [String:String]) -> String {
@@ -101,7 +117,7 @@ extension GitHubAPIController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        return 3
     }    
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
