@@ -18,13 +18,13 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ctN-sJ-cPd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="127"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="plank_up" translatesAutoresizingMaskIntoConstraints="NO" id="WLB-3Z-WC0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" image="plank_up" translatesAutoresizingMaskIntoConstraints="NO" id="WLB-3Z-WC0">
                                 <rect key="frame" x="0.0" y="8" width="320" height="5"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="plank_among" translatesAutoresizingMaskIntoConstraints="NO" id="dOZ-Fy-nQ1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" image="plank_among" translatesAutoresizingMaskIntoConstraints="NO" id="dOZ-Fy-nQ1">
                                 <rect key="frame" x="0.0" y="13" width="320" height="79"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qR7-dF-rfX">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qR7-dF-rfX">
                                 <rect key="frame" x="22" y="17" width="36" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="highlightedColor"/>

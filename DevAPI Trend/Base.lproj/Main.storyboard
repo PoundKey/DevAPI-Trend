@@ -43,7 +43,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="GitHub Repo" id="v1F-3w-CFq"/>
+                    <navigationItem key="navigationItem" title="GitHub Repo" id="v1F-3w-CFq">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Cg0-NM-PqY"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="H0n-c5-t14" kind="show" identifier="GitHub" id="4TB-xa-rk6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oLW-Zc-nE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
