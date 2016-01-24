@@ -56,16 +56,16 @@ extension GitHubViewController: CarbonTabSwipeNavigationDelegate {
         
         switch index {
         case 0:
-            let swiftRepo = "https://api.github.com/search/repositories?q=language:swift+stars:>300+created:>2014-06-01&sort=stars&order=desc"
-            controller.request = swiftRepo
+            let swiftRepo = "language:swift+stars:>300+created:>2014-06-01"
+            controller.query = swiftRepo
         case 1:
-            let javaScriptRepo = "https://api.github.com/search/repositories?q=language:javascript+stars:>1000+created:>2015-01-01&sort=stars&order=desc"
-            controller.request = javaScriptRepo
+            let javaScriptRepo = "language:javascript+stars:>1000+created:>2015-01-01"
+            controller.query = javaScriptRepo
         case 2:
-            let overallRepo = "https://api.github.com/search/repositories?q=stars:>1000+created:>2015-01-01&sort=stars&order=desc"
-            controller.request = overallRepo
+            let overallRepo = "stars:>1000+created:>2015-01-01"
+            controller.query = overallRepo
         default:
-            controller.request = ""
+            controller.query = ""
         }
         return controller
     }
