@@ -139,9 +139,11 @@ public class XWRefreshStateHeader: XWRefreshHeader {
             
             //跟新的时间
             self.lastUpdatedTimeLabel.xw_x = 0
-            self.lastUpdatedTimeLabel.xw_y = self.stateLabel.xw_height
+            self.lastUpdatedTimeLabel.xw_y = self.stateLabel.xw_height - 10
             self.lastUpdatedTimeLabel.xw_width = self.xw_width
-            self.lastUpdatedTimeLabel.xw_height = self.xw_height - self.lastUpdatedTimeLabel.xw_y
+            self.lastUpdatedTimeLabel.xw_height = 20
+            
+            
             
         }
 

@@ -19,9 +19,9 @@ let XWRefreshLabelFont = UIFont.boldSystemFontOfSize(13)
 
 
 /** 头部高度 */
-let XWRefreshHeaderHeight:CGFloat = 56
+let XWRefreshHeaderHeight:CGFloat = 100
 /** 尾部高度 */
-let XWRefreshFooterHeight:CGFloat = 44
+let XWRefreshFooterHeight:CGFloat = 50
 
 /** gifView 偏差 */
 let XWRefreshGifViewWidthDeviation:CGFloat = 99

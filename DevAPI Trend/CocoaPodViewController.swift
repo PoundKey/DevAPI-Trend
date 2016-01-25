@@ -21,13 +21,6 @@ class CocoaPodViewController: UIViewController {
     var htmlPageTitle: String?
     var htmlPageLastUpdated: String?
     
-    
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: "refreshView:", forControlEvents: UIControlEvents.ValueChanged)
-        return refreshControl
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "CocoaPods"
@@ -46,7 +39,7 @@ class CocoaPodViewController: UIViewController {
     
     func initViewList() {
         self.tableView.registerNib(UINib(nibName: "DevCell", bundle:nil), forCellReuseIdentifier: "cell")
-        self.tableView.addSubview(self.refreshControl)
+        self.tableView.headerView = createHeaderRefreshControl(self, action: "refreshView")
         SVProgressHUD.show()
         fetchHTML()
     }
@@ -111,16 +104,14 @@ class CocoaPodViewController: UIViewController {
                 self.trendOverall.removeAll()
                 self.trendDaily.removeAll()
                 self.parseHTML(value)
-                lastUpdatedFormatter(self.refreshControl)
-                SVProgressHUD.showSuccessWithStatus("Reloaded!")
             case .Failure:
                 SVProgressHUD.showErrorWithStatus("Reuqest Failed.")
             }
-            self.refreshControl.endRefreshing()
+            self.tableView.headerView?.endRefreshing()
         }
     }
     
-    func refreshView(refreshControl: UIRefreshControl) {
+    func refreshView() {
         reloadHTML()
     }
     
