@@ -29,3 +29,20 @@ func lastUpdatedFormatter(refreshControl: UIRefreshControl) {
     let attributedTitle: NSAttributedString = NSAttributedString(string: title, attributes: attrsDictionary as? [String : AnyObject])
     refreshControl.attributedTitle = attributedTitle
 }
+
+func lastUpdatedTime() -> String {
+    let formatter: NSDateFormatter = NSDateFormatter()
+    formatter.dateFormat = "MMM d, h:mm a"
+    let time: String = "Last update: \(formatter.stringFromDate(NSDate()))"
+    return time
+}
+
+func createMJRefreshNormalHeader(controller: UIViewController, action: Selector) -> MJRefreshNormalHeader {
+    let header: MJRefreshNormalHeader = MJRefreshNormalHeader(refreshingTarget: controller, refreshingAction: action)
+    header.automaticallyChangeAlpha = true
+    header.lastUpdatedTimeLabel?.font = UIFont.systemFontOfSize(12)
+    header.setTitle("Pull down to refresh", forState: .Idle)
+    header.setTitle("Release to refresh", forState: .Pulling)
+    header.setTitle("Loading...", forState: .Refreshing)
+    return header
+}

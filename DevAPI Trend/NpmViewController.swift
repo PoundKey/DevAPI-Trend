@@ -34,7 +34,9 @@ class NpmViewController: UIViewController {
     
     func initViewList() {
         tableView.registerNib(UINib(nibName: "DevCell", bundle:nil), forCellReuseIdentifier: "cell")
-        tableView.addSubview(self.refreshControl)
+        //tableView.addSubview(self.refreshControl)
+        self.tableView.mj_header = createMJRefreshNormalHeader(self, action: "refreshView")
+
         SVProgressHUD.show()
         fetchHTML(homePage)
     }
@@ -106,14 +108,12 @@ class NpmViewController: UIViewController {
             //fetchHTML(next)
         }
         print("loadNextPage")
+        self.tableView.mj_header.endRefreshing()
     }
     
-    func refreshView(refreshControl: UIRefreshControl) {
-        if refreshControl == self.refreshControl {
-            reloadHTML()
-        } else {
-            loadNextPage()
-        }
+    func refreshView() {
+        sleep(1)
+        self.tableView.mj_header.endRefreshing()
     }
 
 

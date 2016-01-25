@@ -57,7 +57,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oLW-Zc-nE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1189" y="922"/>
+            <point key="canvasLocation" x="1170" y="978"/>
         </scene>
         <!--Web Page View Controller-->
         <scene sceneID="bP8-mO-YHy">
@@ -121,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8je-II-0Pf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1907" y="922"/>
+            <point key="canvasLocation" x="1907" y="978"/>
         </scene>
         <!--CocoaPods-->
         <scene sceneID="Dn5-tM-Rlb">
@@ -222,7 +222,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jsY-7c-Sf3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="419" y="960"/>
+            <point key="canvasLocation" x="419" y="984"/>
         </scene>
     </scenes>
     <resources>
@@ -232,6 +232,6 @@
         <image name="scrollUp" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5R4-MD-Li2"/>
+        <segue reference="lhl-UR-yan"/>
     </inferredMetricsTieBreakers>
 </document>
