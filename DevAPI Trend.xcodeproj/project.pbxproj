@@ -13,6 +13,7 @@
 		763D3DB21C538706001B9824 /* GitHubAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763D3DB11C538706001B9824 /* GitHubAPIController.swift */; };
 		763D3DB41C54594C001B9824 /* DevCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763D3DB31C54594C001B9824 /* DevCell.xib */; };
 		763D3DB61C545A4C001B9824 /* DevCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763D3DB51C545A4C001B9824 /* DevCell.swift */; };
+		763D3DB81C559FF0001B9824 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763D3DB71C559FF0001B9824 /* Helpers.swift */; };
 		7694B8EE1C50A86B0053DE20 /* WebPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7694B8ED1C50A86B0053DE20 /* WebPageViewController.swift */; };
 		76A98C291C4CC0390010199F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A98C281C4CC0390010199F /* AppDelegate.swift */; };
 		76A98C2E1C4CC0390010199F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76A98C2C1C4CC0390010199F /* Main.storyboard */; };
@@ -67,6 +68,7 @@
 		763D3DB11C538706001B9824 /* GitHubAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubAPIController.swift; sourceTree = "<group>"; };
 		763D3DB31C54594C001B9824 /* DevCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DevCell.xib; sourceTree = "<group>"; };
 		763D3DB51C545A4C001B9824 /* DevCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevCell.swift; sourceTree = "<group>"; };
+		763D3DB71C559FF0001B9824 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		7694B8ED1C50A86B0053DE20 /* WebPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebPageViewController.swift; sourceTree = "<group>"; };
 		76A98C251C4CC0390010199F /* DevAPI Trend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DevAPI Trend.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76A98C281C4CC0390010199F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				7611BFA01C50B1B40059A3ED /* Kanna.framework */,
 				76AFDC6A1C50B52D000369E0 /* Alamofire.framework */,
 				76DDDDE61C4F43D200670299 /* SwiftyJSON.swift */,
+				763D3DB71C559FF0001B9824 /* Helpers.swift */,
 				76AFDC741C5174D5000369E0 /* DevAPI Trend-Bridging-Header.h */,
 			);
 			name = Libraries;
@@ -324,6 +327,7 @@
 				76AFDC851C5362FB000369E0 /* CarbonSwipeRefresh.m in Sources */,
 				763D3DB61C545A4C001B9824 /* DevCell.swift in Sources */,
 				76DDDDA91C4F41EE00670299 /* GitHubViewController.swift in Sources */,
+				763D3DB81C559FF0001B9824 /* Helpers.swift in Sources */,
 				763D3DB21C538706001B9824 /* GitHubAPIController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

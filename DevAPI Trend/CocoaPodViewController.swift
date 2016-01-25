@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import Kanna
+import SVProgressHUD
 
 class CocoaPodViewController: UIViewController {
     
@@ -16,24 +17,24 @@ class CocoaPodViewController: UIViewController {
     
     var trendDaily = [APIModel]()
     var trendOverall = [APIModel]()
-   
+    
     var htmlPageTitle: String?
     var htmlPageLastUpdated: String?
+    
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refreshView:", forControlEvents: UIControlEvents.ValueChanged)
+        return refreshControl
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "CocoaPods"
         initViewList()
-    
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
+        
     }
     
-    
-
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let cell = sender as! DevCell
         let url = NSURL(string: cell.url!)
@@ -44,7 +45,9 @@ class CocoaPodViewController: UIViewController {
     }
     
     func initViewList() {
-        tableView.registerNib(UINib(nibName: "DevCell", bundle:nil), forCellReuseIdentifier: "cell")
+        self.tableView.registerNib(UINib(nibName: "DevCell", bundle:nil), forCellReuseIdentifier: "cell")
+        self.tableView.addSubview(self.refreshControl)
+        SVProgressHUD.show()
         fetchHTML()
     }
     
@@ -57,23 +60,24 @@ class CocoaPodViewController: UIViewController {
             case .Failure:
                 print("No Internet Connection Error: DX21")
             }
+            SVProgressHUD.dismiss()
         }
     }
     
     func parseHTML(html: String) {
         if let doc = Kanna.HTML(html: html, encoding: NSUTF8StringEncoding) {
-                setHtmlPageMeta(doc)
-                for (index, table) in doc.css("tbody").enumerate() {
-                    switch index {
-                    case 0:
-                        setTrendList(&trendDaily, table: table)
-                    case 1:
-                        setTrendList(&trendOverall, table: table)
-                    default:
-                        break
-                    }
+            setHtmlPageMeta(doc)
+            for (index, table) in doc.css("tbody").enumerate() {
+                switch index {
+                case 0:
+                    setTrendList(&trendDaily, table: table)
+                case 1:
+                    setTrendList(&trendOverall, table: table)
+                default:
+                    break
                 }
-                self.tableView.reloadData()
+            }
+            self.tableView.reloadData()
         }
     }
     
@@ -99,15 +103,39 @@ class CocoaPodViewController: UIViewController {
         }
     }
     
-    func refreshView() {
-        
+    func reloadHTML() {
+        let url = "https://trendingcocoapods.github.io"
+        Alamofire.request(.GET, url).responseString { res in
+            switch res.result {
+            case .Success(let value):
+                self.trendOverall.removeAll()
+                self.trendDaily.removeAll()
+                self.parseHTML(value)
+                lastUpdatedFormatter(self.refreshControl)
+                SVProgressHUD.showSuccessWithStatus("Reloaded!")
+            case .Failure:
+                SVProgressHUD.showErrorWithStatus("Reuqest Failed.")
+                print("No Internet Connection Error: DX21")
+            }
+            self.refreshControl.endRefreshing()
+        }
     }
-
+    
+    func refreshView(refreshControl: UIRefreshControl) {
+        reloadHTML()
+    }
+    
 }
 
 extension CocoaPodViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        if trendOverall.count > 0 {
+            self.tableView.backgroundView = nil
+            return 2
+        } else {
+            emptyTableViewPage(self.tableView, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
+        }
+        return 0
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -174,46 +202,5 @@ extension CocoaPodViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
 }
-
-/*
-extension CocoaPodViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 2
-    }
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return trendDaily.count
-        case 1:
-            return trendOverall.count
-        default:
-            return 0
-        }
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! DevCell
-        
-        let APIitem: APIModel
-        switch indexPath.section {
-        case 0:
-            APIitem = trendDaily[indexPath.row]
-        case 1:
-            APIitem = trendOverall[indexPath.row]
-        default:
-            APIitem = APIModel(title: "nil", detail: "null", url: "undefined", star: 0)
-        }
-        cell.title.text = APIitem.title
-        cell.detail.text = APIitem.detail
-        cell.star.text = "Star: \(APIitem.star)"
-        return cell
-    }
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("selected: \(indexPath.row)")
-    }
-}
-*/
 
 
