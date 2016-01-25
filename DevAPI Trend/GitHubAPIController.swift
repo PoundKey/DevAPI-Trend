@@ -18,6 +18,11 @@ class GitHubAPIController: UIViewController {
     var query: String!
     var page: Int =  1
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refreshView:", forControlEvents: UIControlEvents.ValueChanged)
+        return refreshControl
+    }()
     
     override func viewDidLoad() {
         
@@ -27,7 +32,8 @@ class GitHubAPIController: UIViewController {
 
     func initViewList() {
         tableView.registerNib(UINib(nibName: "DevCell", bundle:nil), forCellReuseIdentifier: "cell")
-        tableView.scrollsToTop = true
+        tableView.addSubview(self.refreshControl)
+        SVProgressHUD.show()
         fetchJSON()
     }
     
@@ -58,6 +64,7 @@ class GitHubAPIController: UIViewController {
             case .Failure:
                 print("No Internet Connection Error: DX21")
             }
+            SVProgressHUD.dismiss()
         }
     }
     
@@ -84,6 +91,10 @@ class GitHubAPIController: UIViewController {
         return "q=\(query)&sort=\(sortVar)&order=\(order)&page=\(page)"
     }
     
+    func refreshView(refreshControl: UIRefreshControl) {
+        
+    }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let cell = sender as! DevCell
@@ -97,7 +108,13 @@ class GitHubAPIController: UIViewController {
 
 extension GitHubAPIController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        if trendOverall.count > 0 {
+            self.tableView.backgroundView = nil
+            return 1
+        } else {
+            emptyTableViewPage(self.tableView, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
+        }
+        return 0
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

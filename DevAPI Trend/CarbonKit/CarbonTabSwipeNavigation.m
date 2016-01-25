@@ -26,7 +26,7 @@
 @interface CarbonTabSwipeNavigation() <UIPageViewControllerDelegate,
 UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 {
-	BOOL isLocked;
+	BOOL isSwipeLocked;
 	NSInteger selectedIndex;
 	CGPoint previewsOffset;
 }
@@ -126,12 +126,12 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 								duration:(NSTimeInterval)duration {
-	isLocked = YES;
+	isSwipeLocked = YES;
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
 	[self.pageViewController.view layoutSubviews];
-	isLocked = NO;
+	isSwipeLocked = NO;
 }
 
 - (void)viewWillLayoutSubviews {
@@ -157,26 +157,26 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 	? UIPageViewControllerNavigationDirectionForward
 	: UIPageViewControllerNavigationDirectionReverse;
 	
-	isLocked = YES;
+	// Support RTL
+	if (self.isRTL) {
+		if (animateDirection == UIPageViewControllerNavigationDirectionForward) {
+			animateDirection = UIPageViewControllerNavigationDirectionReverse;
+		} else {
+			animateDirection = UIPageViewControllerNavigationDirectionForward;
+		}
+	}
+	
+	isSwipeLocked = YES;
 	segment.userInteractionEnabled = NO;
 	self.pageViewController.view.userInteractionEnabled = NO;
 	
-	id replaceCompletionBlock = ^(BOOL finished) {
-		isLocked = NO;
+	id animateCompletionBlock = ^(BOOL finished) {
+		isSwipeLocked = NO;
 		selectedIndex = index;
 		self.carbonSegmentedControl.userInteractionEnabled = YES;
 		self.pageViewController.view.userInteractionEnabled = YES;
 		
 		[self callDelegateForCurrentIndex];
-	};
-	
-	id animateCompletionBlock = ^(BOOL finished) {
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[self.pageViewController setViewControllers:@[viewController]
-											  direction:animateDirection
-											   animated:NO
-											 completion:replaceCompletionBlock];
-		});
 	};
 	
 	[self callDelegateForTargetIndex];
@@ -291,6 +291,14 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 
 # pragma mark - ScrollView Delegate
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+	self.carbonSegmentedControl.userInteractionEnabled = NO;
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+	self.carbonSegmentedControl.userInteractionEnabled = YES;
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 	
 	CGPoint offset = scrollView.contentOffset;
@@ -301,20 +309,30 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 		return;
 	}
 	
-	if (!isLocked) {
+	if (!isSwipeLocked) {
 		
 		if (offset.x < scrollViewWidth) {
 			// we are moving back
 			
-			if (selectedIndex - 1 < 0) {
-				return;
+			// Support RTL
+			NSInteger backIndex = selectedIndex;
+			if (self.isRTL) {
+				// Ensure index range
+				if (++backIndex >= self.carbonSegmentedControl.numberOfSegments) {
+					return;
+				}
+			} else {
+				// Ensure index range
+				if (--backIndex < 0) {
+					return;
+				}
 			}
 			
 			CGFloat newX = offset.x - scrollViewWidth;
 			
 			CGFloat selectedSegmentWidth = [self.carbonSegmentedControl getWidthForSegmentAtIndex:selectedIndex];
 			CGFloat selectedOriginX = [self.carbonSegmentedControl getMinXForSegmentAtIndex:selectedIndex];
-			CGFloat backTabWidth = [self.carbonSegmentedControl getWidthForSegmentAtIndex:selectedIndex-1];
+			CGFloat backTabWidth = [self.carbonSegmentedControl getWidthForSegmentAtIndex:backIndex];
 			
 			CGFloat minX = selectedOriginX + newX / scrollViewWidth * backTabWidth;
 			[self.carbonSegmentedControl setIndicatorMinX:minX];
@@ -326,8 +344,8 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 			[self.carbonSegmentedControl updateIndicatorWithAnimation:NO];
 			
 			if (ABS(newX) > scrollViewWidth / 2) {
-				if (self.carbonSegmentedControl.selectedSegmentIndex != selectedIndex - 1) {
-					[self.carbonSegmentedControl setSelectedSegmentIndex:selectedIndex - 1];
+				if (self.carbonSegmentedControl.selectedSegmentIndex != backIndex) {
+					[self.carbonSegmentedControl setSelectedSegmentIndex:backIndex];
 					[self callDelegateForTargetIndex];
 				}
 			} else {
@@ -340,15 +358,25 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 		} else {
 			// we are moving forward
 			
-			if (selectedIndex + 1 >= self.carbonSegmentedControl.numberOfSegments) {
-				return;
+			// Support RTL
+			NSInteger nextIndex = selectedIndex;
+			if (self.isRTL) {
+				// Ensure index range
+				if (--nextIndex < 0) {
+					return;
+				}
+			} else {
+				// Ensure index range
+				if (++nextIndex >= self.carbonSegmentedControl.numberOfSegments) {
+					return;
+				}
 			}
 			
 			CGFloat newX = offset.x - scrollViewWidth;
 
 			CGFloat selectedSegmentWidth = [self.carbonSegmentedControl getWidthForSegmentAtIndex:selectedIndex];
 			CGFloat selectedOriginX = [self.carbonSegmentedControl getMinXForSegmentAtIndex:selectedIndex];
-			CGFloat nextTabWidth = [self.carbonSegmentedControl getWidthForSegmentAtIndex:selectedIndex+1];
+			CGFloat nextTabWidth = [self.carbonSegmentedControl getWidthForSegmentAtIndex:nextIndex];
 			
 			CGFloat minX = selectedOriginX + newX / scrollViewWidth * selectedSegmentWidth;
 			[self.carbonSegmentedControl setIndicatorMinX:minX];
@@ -360,8 +388,8 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 			[self.carbonSegmentedControl updateIndicatorWithAnimation:NO];
 			
 			if (newX > scrollViewWidth / 2) {
-				if (self.carbonSegmentedControl.selectedSegmentIndex != selectedIndex + 1) {
-					[self.carbonSegmentedControl setSelectedSegmentIndex:selectedIndex + 1];
+				if (self.carbonSegmentedControl.selectedSegmentIndex != nextIndex) {
+					[self.carbonSegmentedControl setSelectedSegmentIndex:nextIndex];
 					[self callDelegateForTargetIndex];
 				}
 			} else {
@@ -388,7 +416,7 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 		}
 	}
 	
-	[UIView animateWithDuration:isLocked ? 0.3 : 0 animations:^{
+	[UIView animateWithDuration:isSwipeLocked ? 0.3 : 0 animations:^{
 		_carbonTabSwipeScrollView.contentOffset = CGPointMake(offsetX, 0);
 	}];
 	
@@ -420,6 +448,7 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 	for (UIView *subView in _pageViewController.view.subviews) {
 		if ([subView isKindOfClass:[UIScrollView class]]) {
 			((UIScrollView *)subView).delegate = self;
+            ((UIScrollView *)subView).panGestureRecognizer.maximumNumberOfTouches = 1;
 		}
 	}
 	
@@ -600,9 +629,21 @@ UIPageViewControllerDataSource, UIScrollViewDelegate, UIToolbarDelegate>
 	};
 	
 	[_pageViewController setViewControllers:@[viewController]
-								  direction:UIPageViewControllerNavigationDirectionForward
+								  direction:self.directionAnimation
 								   animated:YES
 								 completion:completionBlock];
+}
+
+- (BOOL)isRTL {
+	return [UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionRightToLeft
+	&& [self.view respondsToSelector:@selector(semanticContentAttribute)];
+}
+
+- (UIPageViewControllerNavigationDirection)directionAnimation {
+	if (self.isRTL) {
+		return UIPageViewControllerNavigationDirectionReverse;
+	}
+	return UIPageViewControllerNavigationDirectionForward;
 }
 
 - (void)callDelegateForTargetIndex {

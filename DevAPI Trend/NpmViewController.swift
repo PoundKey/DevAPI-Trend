@@ -15,8 +15,16 @@ class NpmViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     var trendOverall = [APIModel]()
 
+    let homePage = "https://www.npmjs.com/browse/star"
     var htmlPageTitle: String?
     var htmlPageNext: String?
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refreshView:", forControlEvents: UIControlEvents.ValueChanged)
+        return refreshControl
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +34,8 @@ class NpmViewController: UIViewController {
     
     func initViewList() {
         tableView.registerNib(UINib(nibName: "DevCell", bundle:nil), forCellReuseIdentifier: "cell")
-        let homePage = "https://www.npmjs.com/browse/star"
+        tableView.addSubview(self.refreshControl)
+        SVProgressHUD.show()
         fetchHTML(homePage)
     }
     
@@ -39,6 +48,7 @@ class NpmViewController: UIViewController {
             case .Failure:
                 print("No Internet Connection Error: DX21")
             }
+            SVProgressHUD.dismiss()
         }
     }
     
@@ -76,9 +86,33 @@ class NpmViewController: UIViewController {
         return [title, detail, version]
     }
     
+    func reloadHTML() {
+        Alamofire.request(.GET, homePage).responseString { res in
+            switch res.result {
+            case .Success(let value):
+                self.trendOverall.removeAll()
+                self.parseHTML(value)
+                lastUpdatedFormatter(self.refreshControl)
+                SVProgressHUD.showSuccessWithStatus("Reloaded!")
+            case .Failure:
+                SVProgressHUD.showErrorWithStatus("Reuqest Failed.")
+            }
+            self.refreshControl.endRefreshing()
+        }
+    }
+    
     func loadNextPage() {
         if let next = htmlPageNext {
-            
+            //fetchHTML(next)
+        }
+        print("loadNextPage")
+    }
+    
+    func refreshView(refreshControl: UIRefreshControl) {
+        if refreshControl == self.refreshControl {
+            reloadHTML()
+        } else {
+            loadNextPage()
         }
     }
 
@@ -97,7 +131,13 @@ class NpmViewController: UIViewController {
 
 extension NpmViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        if trendOverall.count > 0 {
+            self.tableView.backgroundView = nil
+            return 1
+        } else {
+            emptyTableViewPage(self.tableView, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
+        }
+        return 0
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

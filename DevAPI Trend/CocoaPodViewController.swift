@@ -115,7 +115,6 @@ class CocoaPodViewController: UIViewController {
                 SVProgressHUD.showSuccessWithStatus("Reloaded!")
             case .Failure:
                 SVProgressHUD.showErrorWithStatus("Reuqest Failed.")
-                print("No Internet Connection Error: DX21")
             }
             self.refreshControl.endRefreshing()
         }

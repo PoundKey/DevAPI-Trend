@@ -18,6 +18,7 @@ class WebPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.delegate = self
+        webView.scalesPageToFit = true
         webView.loadRequest(request)
         
     }

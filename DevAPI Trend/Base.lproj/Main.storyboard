@@ -95,7 +95,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="JoM-b2-Kd3">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="JoM-b2-Kd3">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -105,10 +105,14 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="JoM-b2-Kd3" secondAttribute="trailing" id="Vp4-r6-P0Z"/>
+                            <constraint firstAttribute="bottom" secondItem="JoM-b2-Kd3" secondAttribute="bottom" id="e5c-Hb-gI2"/>
+                            <constraint firstItem="JoM-b2-Kd3" firstAttribute="top" secondItem="GyN-hB-IXr" secondAttribute="top" id="eEJ-xa-oDu"/>
+                            <constraint firstItem="JoM-b2-Kd3" firstAttribute="leading" secondItem="GyN-hB-IXr" secondAttribute="leading" id="hbB-rC-tYm"/>
+                        </constraints>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="rxv-c3-xUS"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="JoM-b2-Kd3" id="BuX-Cc-kiq"/>
@@ -228,6 +232,6 @@
         <image name="scrollUp" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CAa-SO-WgL"/>
+        <segue reference="5R4-MD-Li2"/>
     </inferredMetricsTieBreakers>
 </document>

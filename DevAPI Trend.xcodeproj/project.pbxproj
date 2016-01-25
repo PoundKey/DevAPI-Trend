@@ -14,6 +14,10 @@
 		763D3DB41C54594C001B9824 /* DevCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763D3DB31C54594C001B9824 /* DevCell.xib */; };
 		763D3DB61C545A4C001B9824 /* DevCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763D3DB51C545A4C001B9824 /* DevCell.swift */; };
 		763D3DB81C559FF0001B9824 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763D3DB71C559FF0001B9824 /* Helpers.swift */; };
+		763D3DC61C55F32C001B9824 /* CarbonSwipeRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 763D3DBF1C55F32C001B9824 /* CarbonSwipeRefresh.m */; };
+		763D3DC71C55F32C001B9824 /* CarbonTabSwipeNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 763D3DC11C55F32C001B9824 /* CarbonTabSwipeNavigation.m */; };
+		763D3DC81C55F32C001B9824 /* CarbonTabSwipeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 763D3DC31C55F32C001B9824 /* CarbonTabSwipeScrollView.m */; };
+		763D3DC91C55F32C001B9824 /* CarbonTabSwipeSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 763D3DC51C55F32C001B9824 /* CarbonTabSwipeSegmentedControl.m */; };
 		7694B8EE1C50A86B0053DE20 /* WebPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7694B8ED1C50A86B0053DE20 /* WebPageViewController.swift */; };
 		76A98C291C4CC0390010199F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A98C281C4CC0390010199F /* AppDelegate.swift */; };
 		76A98C2E1C4CC0390010199F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76A98C2C1C4CC0390010199F /* Main.storyboard */; };
@@ -24,10 +28,6 @@
 		76AFDC6C1C50B52D000369E0 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76AFDC6A1C50B52D000369E0 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		76AFDC781C524D83000369E0 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76AFDC771C524D83000369E0 /* SVProgressHUD.framework */; };
 		76AFDC791C524D83000369E0 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76AFDC771C524D83000369E0 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		76AFDC851C5362FB000369E0 /* CarbonSwipeRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AFDC7E1C5362FB000369E0 /* CarbonSwipeRefresh.m */; };
-		76AFDC861C5362FB000369E0 /* CarbonTabSwipeNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AFDC801C5362FB000369E0 /* CarbonTabSwipeNavigation.m */; };
-		76AFDC871C5362FB000369E0 /* CarbonTabSwipeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AFDC821C5362FB000369E0 /* CarbonTabSwipeScrollView.m */; };
-		76AFDC881C5362FB000369E0 /* CarbonTabSwipeSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AFDC841C5362FB000369E0 /* CarbonTabSwipeSegmentedControl.m */; };
 		76DDDDA71C4F41D700670299 /* NpmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DDDDA61C4F41D700670299 /* NpmViewController.swift */; };
 		76DDDDA91C4F41EE00670299 /* GitHubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DDDDA81C4F41EE00670299 /* GitHubViewController.swift */; };
 		76DDDDE71C4F43D200670299 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DDDDE61C4F43D200670299 /* SwiftyJSON.swift */; };
@@ -69,6 +69,15 @@
 		763D3DB31C54594C001B9824 /* DevCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DevCell.xib; sourceTree = "<group>"; };
 		763D3DB51C545A4C001B9824 /* DevCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevCell.swift; sourceTree = "<group>"; };
 		763D3DB71C559FF0001B9824 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		763D3DBD1C55F32C001B9824 /* CarbonKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonKit.h; sourceTree = "<group>"; };
+		763D3DBE1C55F32C001B9824 /* CarbonSwipeRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonSwipeRefresh.h; sourceTree = "<group>"; };
+		763D3DBF1C55F32C001B9824 /* CarbonSwipeRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarbonSwipeRefresh.m; sourceTree = "<group>"; };
+		763D3DC01C55F32C001B9824 /* CarbonTabSwipeNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonTabSwipeNavigation.h; sourceTree = "<group>"; };
+		763D3DC11C55F32C001B9824 /* CarbonTabSwipeNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarbonTabSwipeNavigation.m; sourceTree = "<group>"; };
+		763D3DC21C55F32C001B9824 /* CarbonTabSwipeScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonTabSwipeScrollView.h; sourceTree = "<group>"; };
+		763D3DC31C55F32C001B9824 /* CarbonTabSwipeScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarbonTabSwipeScrollView.m; sourceTree = "<group>"; };
+		763D3DC41C55F32C001B9824 /* CarbonTabSwipeSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonTabSwipeSegmentedControl.h; sourceTree = "<group>"; };
+		763D3DC51C55F32C001B9824 /* CarbonTabSwipeSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarbonTabSwipeSegmentedControl.m; sourceTree = "<group>"; };
 		7694B8ED1C50A86B0053DE20 /* WebPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebPageViewController.swift; sourceTree = "<group>"; };
 		76A98C251C4CC0390010199F /* DevAPI Trend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DevAPI Trend.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76A98C281C4CC0390010199F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,15 +91,6 @@
 		76AFDC6A1C50B52D000369E0 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		76AFDC741C5174D5000369E0 /* DevAPI Trend-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DevAPI Trend-Bridging-Header.h"; sourceTree = "<group>"; };
 		76AFDC771C524D83000369E0 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = ../Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
-		76AFDC7C1C5362FB000369E0 /* CarbonKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonKit.h; sourceTree = "<group>"; };
-		76AFDC7D1C5362FB000369E0 /* CarbonSwipeRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonSwipeRefresh.h; sourceTree = "<group>"; };
-		76AFDC7E1C5362FB000369E0 /* CarbonSwipeRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarbonSwipeRefresh.m; sourceTree = "<group>"; };
-		76AFDC7F1C5362FB000369E0 /* CarbonTabSwipeNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonTabSwipeNavigation.h; sourceTree = "<group>"; };
-		76AFDC801C5362FB000369E0 /* CarbonTabSwipeNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarbonTabSwipeNavigation.m; sourceTree = "<group>"; };
-		76AFDC811C5362FB000369E0 /* CarbonTabSwipeScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonTabSwipeScrollView.h; sourceTree = "<group>"; };
-		76AFDC821C5362FB000369E0 /* CarbonTabSwipeScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarbonTabSwipeScrollView.m; sourceTree = "<group>"; };
-		76AFDC831C5362FB000369E0 /* CarbonTabSwipeSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonTabSwipeSegmentedControl.h; sourceTree = "<group>"; };
-		76AFDC841C5362FB000369E0 /* CarbonTabSwipeSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarbonTabSwipeSegmentedControl.m; sourceTree = "<group>"; };
 		76DDDDA61C4F41D700670299 /* NpmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NpmViewController.swift; sourceTree = "<group>"; };
 		76DDDDA81C4F41EE00670299 /* GitHubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubViewController.swift; sourceTree = "<group>"; };
 		76DDDDE61C4F43D200670299 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
@@ -120,6 +120,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		763D3DBC1C55F32C001B9824 /* CarbonKit */ = {
+			isa = PBXGroup;
+			children = (
+				763D3DBD1C55F32C001B9824 /* CarbonKit.h */,
+				763D3DBE1C55F32C001B9824 /* CarbonSwipeRefresh.h */,
+				763D3DBF1C55F32C001B9824 /* CarbonSwipeRefresh.m */,
+				763D3DC01C55F32C001B9824 /* CarbonTabSwipeNavigation.h */,
+				763D3DC11C55F32C001B9824 /* CarbonTabSwipeNavigation.m */,
+				763D3DC21C55F32C001B9824 /* CarbonTabSwipeScrollView.h */,
+				763D3DC31C55F32C001B9824 /* CarbonTabSwipeScrollView.m */,
+				763D3DC41C55F32C001B9824 /* CarbonTabSwipeSegmentedControl.h */,
+				763D3DC51C55F32C001B9824 /* CarbonTabSwipeSegmentedControl.m */,
+			);
+			path = CarbonKit;
+			sourceTree = "<group>";
+		};
 		76A98C1C1C4CC0390010199F = {
 			isa = PBXGroup;
 			children = (
@@ -166,22 +182,6 @@
 			path = "DevAPI TrendTests";
 			sourceTree = SOURCE_ROOT;
 		};
-		76AFDC7A1C5362FB000369E0 /* CarbonKit */ = {
-			isa = PBXGroup;
-			children = (
-				76AFDC7C1C5362FB000369E0 /* CarbonKit.h */,
-				76AFDC7D1C5362FB000369E0 /* CarbonSwipeRefresh.h */,
-				76AFDC7E1C5362FB000369E0 /* CarbonSwipeRefresh.m */,
-				76AFDC7F1C5362FB000369E0 /* CarbonTabSwipeNavigation.h */,
-				76AFDC801C5362FB000369E0 /* CarbonTabSwipeNavigation.m */,
-				76AFDC811C5362FB000369E0 /* CarbonTabSwipeScrollView.h */,
-				76AFDC821C5362FB000369E0 /* CarbonTabSwipeScrollView.m */,
-				76AFDC831C5362FB000369E0 /* CarbonTabSwipeSegmentedControl.h */,
-				76AFDC841C5362FB000369E0 /* CarbonTabSwipeSegmentedControl.m */,
-			);
-			path = CarbonKit;
-			sourceTree = "<group>";
-		};
 		76DDDDEA1C4F732300670299 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,7 +197,7 @@
 		76DDDDEB1C4F733300670299 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				76AFDC7A1C5362FB000369E0 /* CarbonKit */,
+				763D3DBC1C55F32C001B9824 /* CarbonKit */,
 				76AFDC771C524D83000369E0 /* SVProgressHUD.framework */,
 				7611BFA01C50B1B40059A3ED /* Kanna.framework */,
 				76AFDC6A1C50B52D000369E0 /* Alamofire.framework */,
@@ -318,17 +318,17 @@
 				76A98C291C4CC0390010199F /* AppDelegate.swift in Sources */,
 				76DDDDE71C4F43D200670299 /* SwiftyJSON.swift in Sources */,
 				76DDDDED1C4F7C8B00670299 /* APICell.swift in Sources */,
-				76AFDC871C5362FB000369E0 /* CarbonTabSwipeScrollView.m in Sources */,
 				76DDDDA71C4F41D700670299 /* NpmViewController.swift in Sources */,
-				76AFDC861C5362FB000369E0 /* CarbonTabSwipeNavigation.m in Sources */,
 				76DDDE851C4F89D700670299 /* CocoaPodViewController.swift in Sources */,
-				76AFDC881C5362FB000369E0 /* CarbonTabSwipeSegmentedControl.m in Sources */,
 				7694B8EE1C50A86B0053DE20 /* WebPageViewController.swift in Sources */,
-				76AFDC851C5362FB000369E0 /* CarbonSwipeRefresh.m in Sources */,
+				763D3DC81C55F32C001B9824 /* CarbonTabSwipeScrollView.m in Sources */,
+				763D3DC61C55F32C001B9824 /* CarbonSwipeRefresh.m in Sources */,
 				763D3DB61C545A4C001B9824 /* DevCell.swift in Sources */,
+				763D3DC71C55F32C001B9824 /* CarbonTabSwipeNavigation.m in Sources */,
 				76DDDDA91C4F41EE00670299 /* GitHubViewController.swift in Sources */,
 				763D3DB81C559FF0001B9824 /* Helpers.swift in Sources */,
 				763D3DB21C538706001B9824 /* GitHubAPIController.swift in Sources */,
+				763D3DC91C55F32C001B9824 /* CarbonTabSwipeSegmentedControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
