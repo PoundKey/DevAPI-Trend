@@ -72,7 +72,7 @@ public class XWRefreshNormalHeader: XWRefreshStateHeader {
         self.arrowView.xw_size = (self.arrowView.image?.size)!
         var arrowCenterX = self.xw_width * 0.5
         if !self.stateLabel.hidden {
-            arrowCenterX -= 100
+            arrowCenterX -= 115
         }
         let arrowCenterY = self.xw_height * 0.5
         self.arrowView.center = CGPointMake(arrowCenterX, arrowCenterY)

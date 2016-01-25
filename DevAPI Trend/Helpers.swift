@@ -40,6 +40,12 @@ func lastUpdatedTime() -> String {
 func createHeaderRefreshControl(controller: UIViewController, action: Selector) -> XWRefreshNormalHeader {
     let header: XWRefreshNormalHeader = XWRefreshNormalHeader(target: controller, action: action)
     header.automaticallyChangeAlpha = true
-    header.lastUpdatedTimeLabel.font = UIFont.systemFontOfSize(12)
+    header.stateLabel.font = UIFont.boldSystemFontOfSize(15)
+    header.lastUpdatedTimeLabel.font = UIFont.systemFontOfSize(13)
     return header
+}
+
+func createFooterRefreshControl(controller: UIViewController, action: Selector) -> XWRefreshAutoNormalFooter {
+    let footer: XWRefreshAutoNormalFooter = XWRefreshAutoNormalFooter(target: controller, action: action)
+    return footer
 }

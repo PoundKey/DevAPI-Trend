@@ -38,11 +38,9 @@ class NpmViewController: UIViewController {
     
     func initViewList() {
         tableView.registerNib(UINib(nibName: "DevCell", bundle:nil), forCellReuseIdentifier: "cell")
-    
         
-        let header = createHeaderRefreshControl(self, action: "refreshView")
-        
-        self.tableView.headerView = header
+        self.tableView.headerView = createHeaderRefreshControl(self, action: "refreshView")
+        self.tableView.footerView = createFooterRefreshControl(self, action: "loadNextPage")
         SVProgressHUD.show()
         fetchHTML(homePage)
     }
@@ -56,6 +54,7 @@ class NpmViewController: UIViewController {
             case .Failure:
                 print("No Internet Connection Error: DX21")
             }
+            self.tableView.footerView?.endRefreshing()
             SVProgressHUD.dismiss()
         }
     }
@@ -82,6 +81,7 @@ class NpmViewController: UIViewController {
                 link = nextPage["href"] {
                     htmlPageNext = baseUrl + link
             }
+
             self.tableView.reloadData()
         }
     }
@@ -100,25 +100,23 @@ class NpmViewController: UIViewController {
             case .Success(let value):
                 self.trendOverall.removeAll()
                 self.parseHTML(value)
-
-                SVProgressHUD.showSuccessWithStatus("Reloaded!")
             case .Failure:
                 SVProgressHUD.showErrorWithStatus("Reuqest Failed.")
             }
+            self.tableView.headerView?.endRefreshing()
         }
     }
     
     func loadNextPage() {
         if let next = htmlPageNext {
-            //fetchHTML(next)
+            fetchHTML(next)
+        } else {
+            self.tableView.footerView?.endRefreshing()
         }
-        print("loadNextPage")
-
     }
     
     func refreshView() {
-        sleep(1)
-        self.tableView.headerView?.endRefreshing()
+        reloadHTML()
     }
 
 

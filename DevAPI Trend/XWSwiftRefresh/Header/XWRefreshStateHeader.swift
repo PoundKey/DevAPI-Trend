@@ -133,7 +133,7 @@ public class XWRefreshStateHeader: XWRefreshHeader {
         if self.lastUpdatedTimeLabel.hidden {
             //状态
             self.stateLabel.frame = self.bounds
-        }else {
+        } else {
             //状态
             self.stateLabel.frame = CGRectMake(0, 0, self.xw_width, self.xw_height * 0.5)
             

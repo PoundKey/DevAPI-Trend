@@ -19,7 +19,7 @@ let XWRefreshLabelFont = UIFont.boldSystemFontOfSize(13)
 
 
 /** 头部高度 */
-let XWRefreshHeaderHeight:CGFloat = 64
+let XWRefreshHeaderHeight:CGFloat = 56
 /** 尾部高度 */
 let XWRefreshFooterHeight:CGFloat = 44
 
@@ -50,9 +50,9 @@ let XWRefreshHeaderStatePullingText = "Release to refresh"
 let XWRefreshHeaderStateRefreshingText = "Loading..."
 
 
-let XWRefreshFooterStateIdleText = "点击加载更多"
-let XWRefreshFooterStateRefreshingText = "正在加载更多的数据..."
-let XWRefreshFooterStateNoMoreDataText = "已经全部加载完毕"
+let XWRefreshFooterStateIdleText = "Tap to load more data"
+let XWRefreshFooterStateRefreshingText = "Loading more data..."
+let XWRefreshFooterStateNoMoreDataText = "Finish loading data"
 
 /** 图片路径 */
 let XWIconSrcPath:String = "Frameworks/XWSwiftRefresh.framework/xw_icon.bundle/xw_down.png"
