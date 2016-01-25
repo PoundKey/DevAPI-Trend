@@ -51,9 +51,8 @@ class CocoaPodViewController: UIViewController {
             case .Success(let value):
                 self.parseHTML(value)
             case .Failure:
-                print("No Internet Connection Error: DX21")
+                SVProgressHUD.showErrorWithStatus("Reuqest Failed.")
             }
-            SVProgressHUD.dismiss()
         }
     }
     
@@ -70,6 +69,7 @@ class CocoaPodViewController: UIViewController {
                     break
                 }
             }
+            SVProgressHUD.dismiss()
             self.tableView.reloadData()
         }
     }

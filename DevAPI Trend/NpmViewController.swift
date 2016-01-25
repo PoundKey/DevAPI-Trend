@@ -52,10 +52,9 @@ class NpmViewController: UIViewController {
             case .Success(let value):
                 self.parseHTML(value)
             case .Failure:
-                print("No Internet Connection Error: DX21")
+                SVProgressHUD.showErrorWithStatus("Reuqest Failed.")
             }
             self.tableView.footerView?.endRefreshing()
-            SVProgressHUD.dismiss()
         }
     }
     
@@ -81,7 +80,7 @@ class NpmViewController: UIViewController {
                 link = nextPage["href"] {
                     htmlPageNext = baseUrl + link
             }
-
+            SVProgressHUD.dismiss()
             self.tableView.reloadData()
         }
     }
