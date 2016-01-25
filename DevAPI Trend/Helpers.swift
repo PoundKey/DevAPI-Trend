@@ -37,12 +37,9 @@ func lastUpdatedTime() -> String {
     return time
 }
 
-func createMJRefreshNormalHeader(controller: UIViewController, action: Selector) -> MJRefreshNormalHeader {
-    let header: MJRefreshNormalHeader = MJRefreshNormalHeader(refreshingTarget: controller, refreshingAction: action)
+func createHeaderRefreshControl(controller: UIViewController, action: Selector) -> XWRefreshNormalHeader {
+    let header: XWRefreshNormalHeader = XWRefreshNormalHeader(target: controller, action: action)
     header.automaticallyChangeAlpha = true
-    header.lastUpdatedTimeLabel?.font = UIFont.systemFontOfSize(12)
-    header.setTitle("Pull down to refresh", forState: .Idle)
-    header.setTitle("Release to refresh", forState: .Pulling)
-    header.setTitle("Loading...", forState: .Refreshing)
+    header.lastUpdatedTimeLabel.font = UIFont.systemFontOfSize(12)
     return header
 }

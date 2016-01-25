@@ -19,11 +19,15 @@ class NpmViewController: UIViewController {
     var htmlPageTitle: String?
     var htmlPageNext: String?
     
+    /**
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refreshView:", forControlEvents: UIControlEvents.ValueChanged)
         return refreshControl
     }()
+    
+    tableView.addSubview(self.refreshControl)
+    */
     
     
     override func viewDidLoad() {
@@ -34,9 +38,11 @@ class NpmViewController: UIViewController {
     
     func initViewList() {
         tableView.registerNib(UINib(nibName: "DevCell", bundle:nil), forCellReuseIdentifier: "cell")
-        //tableView.addSubview(self.refreshControl)
-        self.tableView.mj_header = createMJRefreshNormalHeader(self, action: "refreshView")
-
+    
+        
+        let header = createHeaderRefreshControl(self, action: "refreshView")
+        
+        self.tableView.headerView = header
         SVProgressHUD.show()
         fetchHTML(homePage)
     }
@@ -94,12 +100,11 @@ class NpmViewController: UIViewController {
             case .Success(let value):
                 self.trendOverall.removeAll()
                 self.parseHTML(value)
-                lastUpdatedFormatter(self.refreshControl)
+
                 SVProgressHUD.showSuccessWithStatus("Reloaded!")
             case .Failure:
                 SVProgressHUD.showErrorWithStatus("Reuqest Failed.")
             }
-            self.refreshControl.endRefreshing()
         }
     }
     
@@ -108,12 +113,12 @@ class NpmViewController: UIViewController {
             //fetchHTML(next)
         }
         print("loadNextPage")
-        self.tableView.mj_header.endRefreshing()
+
     }
     
     func refreshView() {
         sleep(1)
-        self.tableView.mj_header.endRefreshing()
+        self.tableView.headerView?.endRefreshing()
     }
 
 
