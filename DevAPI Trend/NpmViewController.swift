@@ -39,21 +39,37 @@ class NpmViewController: UIViewController {
     func initViewList() {
         tableView.registerNib(UINib(nibName: "DevCell", bundle:nil), forCellReuseIdentifier: "cell")
         
-        self.tableView.headerView = createHeaderRefreshControl(self, action: "refreshView")
-        self.tableView.footerView = createFooterRefreshControl(self, action: "loadNextPage")
+        self.tableView.headerView = createHeaderRefreshControl(self, action: "reloadHTML")
+        self.tableView.footerView = createFooterRefreshControl(self, action: "fetchHTML")
         SVProgressHUD.show()
-        fetchHTML(homePage)
+        reloadHTML()
     }
     
-    func fetchHTML(url: String) {
-        
-        Alamofire.request(.GET, url).responseString { res in
+    func reloadHTML() {
+        Alamofire.request(.GET, homePage).responseString { res in
             switch res.result {
             case .Success(let value):
+                self.trendOverall.removeAll()
                 self.parseHTML(value)
             case .Failure:
                 SVProgressHUD.showErrorWithStatus("Reuqest Failed.")
             }
+            self.tableView.headerView?.endRefreshing()
+        }
+    }
+    
+    func fetchHTML() {
+        if let url = htmlPageNext {
+            Alamofire.request(.GET, url).responseString { res in
+                switch res.result {
+                case .Success(let value):
+                    self.parseHTML(value)
+                case .Failure:
+                    SVProgressHUD.showErrorWithStatus("Reuqest Failed.")
+                }
+                self.tableView.footerView?.endRefreshing()
+            }
+        } else {
             self.tableView.footerView?.endRefreshing()
         }
     }
@@ -93,32 +109,6 @@ class NpmViewController: UIViewController {
         return [title, detail, version]
     }
     
-    func reloadHTML() {
-        Alamofire.request(.GET, homePage).responseString { res in
-            switch res.result {
-            case .Success(let value):
-                self.trendOverall.removeAll()
-                self.parseHTML(value)
-            case .Failure:
-                SVProgressHUD.showErrorWithStatus("Reuqest Failed.")
-            }
-            self.tableView.headerView?.endRefreshing()
-        }
-    }
-    
-    func loadNextPage() {
-        if let next = htmlPageNext {
-            fetchHTML(next)
-        } else {
-            self.tableView.footerView?.endRefreshing()
-        }
-    }
-    
-    func refreshView() {
-        reloadHTML()
-    }
-
-
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let cell = sender as! DevCell

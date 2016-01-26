@@ -18,11 +18,18 @@ class GitHubAPIController: UIViewController {
     var query: String!
     var page: Int =  1
     
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: "refreshView:", forControlEvents: UIControlEvents.ValueChanged)
-        return refreshControl
-    }()
+    // A closure that tackles the problem of default encoding ("+" and ">") provided by Alamofire,
+    // unfortunately GitHub search API does not like it, therefore customization is provided.
+    let custom: (URLRequestConvertible, parameters: [String: AnyObject]?) -> (NSMutableURLRequest, NSError?) = { req, param in
+        let request = req.URLRequest.mutableCopy() as! NSMutableURLRequest
+        let baseURL = (request.URL?.absoluteString)!
+        var reqString = baseURL + "?" + generateQuery(param as! [String: String])
+        let charSet = NSCharacterSet.URLQueryAllowedCharacterSet()
+        reqString = reqString.stringByAddingPercentEncodingWithAllowedCharacters(charSet)!
+        let URL = NSURL(string: reqString)
+        request.URL = URL
+        return (request, nil)
+    }
     
     override func viewDidLoad() {
         
@@ -32,25 +39,32 @@ class GitHubAPIController: UIViewController {
 
     func initViewList() {
         tableView.registerNib(UINib(nibName: "DevCell", bundle:nil), forCellReuseIdentifier: "cell")
-        tableView.addSubview(self.refreshControl)
+        self.tableView.headerView = createHeaderRefreshControl(self, action: "reloadJSON")
+        self.tableView.footerView = createFooterRefreshControl(self, action: "fetchJSON")
         SVProgressHUD.show()
-        fetchJSON()
+        reloadJSON()
+    }
+    
+    func reloadJSON() {
+        let param: [String: String] = ["q": query, "sort": "stars", "order": "desc", "page": "1"]
+        
+        Alamofire.request(.GET, "https://api.github.com/search/repositories", parameters: param, encoding: .Custom(custom)).responseJSON { res in
+            switch res.result {
+            case .Success(let value):
+                self.trendOverall.removeAll()
+                self.page = 1 //reset data and request page
+                let json = JSON(value)
+                let items = json["items"]
+                self.parseJSON(items)
+            case .Failure:
+                SVProgressHUD.showErrorWithStatus("Reuqest Failed.")
+            }
+
+            self.tableView.headerView?.endRefreshing()
+        }
     }
     
     func fetchJSON() {
-        
-        // A closure that tackles the problem of default encoding ("+" and ">") provided by Alamofire,
-        // unfortunately GitHub search API does not like it, therefore customization is provided.
-        let custom: (URLRequestConvertible, parameters: [String: AnyObject]?) -> (NSMutableURLRequest, NSError?) = { req, param in
-            let request = req.URLRequest.mutableCopy() as! NSMutableURLRequest
-            let baseURL = (request.URL?.absoluteString)!
-            var reqString = baseURL + "?" + self.generateQuery(param as! [String: String])
-            let charSet = NSCharacterSet.URLQueryAllowedCharacterSet()
-            reqString = reqString.stringByAddingPercentEncodingWithAllowedCharacters(charSet)!
-            let URL = NSURL(string: reqString)
-            request.URL = URL
-            return (request, nil)
-        }
         
         let param: [String: String] = ["q": query, "sort": "stars", "order": "desc", "page": String(page)]
 
@@ -62,39 +76,29 @@ class GitHubAPIController: UIViewController {
                 let items = json["items"]
                 self.parseJSON(items)
             case .Failure:
-                print("No Internet Connection Error: DX21")
+                SVProgressHUD.showErrorWithStatus("Reuqest Failed.")
             }
-            SVProgressHUD.dismiss()
+            self.tableView.footerView?.endRefreshing()
         }
     }
     
     func parseJSON(items: JSON) {
-
-        for (_, item) in items {
-            let title    = item["name"].stringValue
-            let star     = item["stargazers_count"].intValue
-            let detail   = item["description"].stringValue
-            let url      = item["html_url"].stringValue
-            let APIitem  = APIModel(title: title, detail: detail, url: url)
-            APIitem.star = star
-            trendOverall.append(APIitem)
+        if !items.isEmpty {
+            for (_, item) in items {
+                let title    = item["name"].stringValue
+                let star     = item["stargazers_count"].intValue
+                let detail   = item["description"].stringValue
+                let url      = item["html_url"].stringValue
+                let APIitem  = APIModel(title: title, detail: detail, url: url)
+                APIitem.star = star
+                trendOverall.append(APIitem)
+            }
+            self.page += 1 // Increase the page count
+            self.tableView.reloadData()
         }
-        // Increase the page count
-        self.tableView.reloadData()
-    }
-    
-    func generateQuery(dict: [String:String]) -> String {
-        let query   = dict["q"]!
-        let sortVar = dict["sort"]!
-        let order   = dict["order"]!
-        let page    = dict["page"]!
-        return "q=\(query)&sort=\(sortVar)&order=\(order)&page=\(page)"
-    }
-    
-    func refreshView(refreshControl: UIRefreshControl) {
         
+        SVProgressHUD.dismiss()
     }
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let cell = sender as! DevCell

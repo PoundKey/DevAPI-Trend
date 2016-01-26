@@ -49,3 +49,19 @@ func createFooterRefreshControl(controller: UIViewController, action: Selector) 
     let footer: XWRefreshAutoNormalFooter = XWRefreshAutoNormalFooter(target: controller, action: action)
     return footer
 }
+
+/**
+ Helper function used to generate parameter string in GET request
+ 
+ - parameter dict: parameter dictionary
+ 
+ - returns: partial string for GET request
+ */
+
+func generateQuery(dict: [String: String]) -> String {
+    let query   = dict["q"]!
+    let sortVar = dict["sort"]!
+    let order   = dict["order"]!
+    let page    = dict["page"]!
+    return "q=\(query)&sort=\(sortVar)&order=\(order)&page=\(page)"
+}

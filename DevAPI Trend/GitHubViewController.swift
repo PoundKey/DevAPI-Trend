@@ -66,7 +66,7 @@ extension GitHubViewController: CarbonTabSwipeNavigationDelegate {
             let swiftRepo = "language:swift+stars:>300+created:>2014-06-01"
             controller.query = swiftRepo
         case 1:
-            let javaScriptRepo = "language:javascript+stars:>1000+created:>2015-01-01"
+            let javaScriptRepo = "language:javascript+stars:>300+created:>2015-01-01"
             controller.query = javaScriptRepo
         case 2:
             let overallRepo = "stars:>1000+created:>2015-01-01"
