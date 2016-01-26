@@ -18,6 +18,7 @@ class CocoaPodViewController: UIViewController {
     var trendDaily = [APIModel]()
     var trendOverall = [APIModel]()
     
+    let homePage = "https://trendingcocoapods.github.io"
     var htmlPageTitle: String?
     var htmlPageLastUpdated: String?
     
@@ -39,21 +40,28 @@ class CocoaPodViewController: UIViewController {
     
     func initViewList() {
         self.tableView.registerNib(UINib(nibName: "DevCell", bundle:nil), forCellReuseIdentifier: "cell")
-        self.tableView.headerView = createHeaderRefreshControl(self, action: "refreshView")
+        self.tableView.headerView = createHeaderRefreshControl(self, action: "reloadHTML")
         SVProgressHUD.show()
-        fetchHTML()
+        reloadHTML()
     }
     
-    func fetchHTML() {
-        let url = "https://trendingcocoapods.github.io"
-        Alamofire.request(.GET, url).responseString { res in
+    func reloadHTML() {
+        
+        Alamofire.request(.GET, homePage).responseString { res in
             switch res.result {
             case .Success(let value):
+                self.trendOverall.removeAll()
+                self.trendDaily.removeAll()
                 self.parseHTML(value)
             case .Failure:
                 SVProgressHUD.showErrorWithStatus("Reuqest Failed.")
             }
+            self.tableView.headerView?.endRefreshing()
         }
+    }
+    
+    func fetchHTML() {
+        // Implement this method if there are multiple pages need to be fetched
     }
     
     func parseHTML(html: String) {
@@ -95,26 +103,7 @@ class CocoaPodViewController: UIViewController {
             }
         }
     }
-    
-    func reloadHTML() {
-        let url = "https://trendingcocoapods.github.io"
-        Alamofire.request(.GET, url).responseString { res in
-            switch res.result {
-            case .Success(let value):
-                self.trendOverall.removeAll()
-                self.trendDaily.removeAll()
-                self.parseHTML(value)
-            case .Failure:
-                SVProgressHUD.showErrorWithStatus("Reuqest Failed.")
-            }
-            self.tableView.headerView?.endRefreshing()
-        }
-    }
-    
-    func refreshView() {
-        reloadHTML()
-    }
-    
+ 
 }
 
 extension CocoaPodViewController: UITableViewDataSource, UITableViewDelegate {
