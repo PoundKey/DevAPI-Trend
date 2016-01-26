@@ -14,7 +14,7 @@
 - [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON): The better way to deal with JSON data in Swift
 - [Kanna](https://github.com/tid-kijyun/Kanna): Kanna is an awesome XML/HTML parser for MacOSX/iOS.
 - [MJRefresh](https://github.com/CoderMJLee/MJRefresh): An easy way to use pull-to-refresh.
-- Data Sources: [Trending CococaPods](https://trendingcocoapods.github.io), [Npm.js Star](https://www.npmjs.com/browse/star), [GitHub API](github api search repositories)
+- Data Sources: [Trending CococaPods](https://trendingcocoapods.github.io), [Npm.js Star](https://www.npmjs.com/browse/star), [GitHub API](https://developer.github.com/v3/search/)
 
 ---
 
