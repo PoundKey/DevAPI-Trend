@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import Kanna
+import SVProgressHUD
 
 class NpmViewController: UIViewController {
 
@@ -28,7 +29,6 @@ class NpmViewController: UIViewController {
     
     tableView.addSubview(self.refreshControl)
     */
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,6 +119,9 @@ class NpmViewController: UIViewController {
         controller.title = cell.title.text
     }
 
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
 }
 
 extension NpmViewController: UITableViewDataSource, UITableViewDelegate {

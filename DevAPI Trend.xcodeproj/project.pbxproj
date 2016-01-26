@@ -91,7 +91,6 @@
 		763D3DC31C55F32C001B9824 /* CarbonTabSwipeScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarbonTabSwipeScrollView.m; sourceTree = "<group>"; };
 		763D3DC41C55F32C001B9824 /* CarbonTabSwipeSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonTabSwipeSegmentedControl.h; sourceTree = "<group>"; };
 		763D3DC51C55F32C001B9824 /* CarbonTabSwipeSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarbonTabSwipeSegmentedControl.m; sourceTree = "<group>"; };
-		763D3DCE1C5624BA001B9824 /* Masonry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Masonry.framework; path = ../Carthage/Build/iOS/Masonry.framework; sourceTree = "<group>"; };
 		763D3E141C566B58001B9824 /* XWConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XWConst.swift; sourceTree = "<group>"; };
 		763D3E151C566B58001B9824 /* XWRefreshComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XWRefreshComponent.swift; sourceTree = "<group>"; };
 		763D3E161C566B58001B9824 /* XWShortcutMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XWShortcutMethod.swift; sourceTree = "<group>"; };
@@ -284,9 +283,8 @@
 		76DDDDEB1C4F733300670299 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				763D3E121C566B58001B9824 /* XWSwiftRefresh */,
 				763D3DBC1C55F32C001B9824 /* CarbonKit */,
-				763D3DCE1C5624BA001B9824 /* Masonry.framework */,
+				763D3E121C566B58001B9824 /* XWSwiftRefresh */,
 				76AFDC771C524D83000369E0 /* SVProgressHUD.framework */,
 				7611BFA01C50B1B40059A3ED /* Kanna.framework */,
 				76AFDC6A1C50B52D000369E0 /* Alamofire.framework */,

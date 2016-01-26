@@ -40,6 +40,10 @@ class WebPageViewController: UIViewController {
         return false
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
 }
 
 extension WebPageViewController: UIWebViewDelegate {

@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         setSVHubStyle()
+        setBarStyle()
         return true
     }
 
@@ -48,7 +49,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SVProgressHUD.setBackgroundColor(UIColor(red: 0, green: 0, blue: 0, alpha: 0.75))
         SVProgressHUD.setForegroundColor(UIColor(red: 1, green: 1, blue: 1, alpha: 1))
     }
-
+    
+    func setBarStyle() {
+        let color: UIColor = UIColor(red: 0.0 / 255, green: 94.0 / 255, blue: 170.0 / 255, alpha: 1)
+        UINavigationBar.appearance().barStyle     = .Black
+        UINavigationBar.appearance().translucent  = true
+        UINavigationBar.appearance().barTintColor = color
+        UINavigationBar.appearance().tintColor    = UIColor.whiteColor()
+        
+        let tabColor: UIColor = UIColor(red: 36.0 / 255, green: 116.0 / 255, blue: 180.0 / 255, alpha: 1)
+        UITabBar.appearance().tintColor = tabColor
+    }
 
 }
 

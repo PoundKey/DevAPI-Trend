@@ -34,13 +34,9 @@ class GitHubViewController: UIViewController {
     }
     
     func style() {
-        let color: UIColor = UIColor(red: 24.0 / 255, green: 75.0 / 255, blue: 152.0 / 255, alpha: 1)
-        /**
-        self.navigationController!.navigationBar.translucent = true
-        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationController!.navigationBar.barTintColor = color
-        self.navigationController!.navigationBar.barStyle = .BlackTranslucent
-        */
+        //let color: UIColor = UIColor(red: 24.0 / 255, green: 75.0 / 255, blue: 152.0 / 255, alpha: 1)
+        let color: UIColor = UIColor(red: 0.0 / 255, green: 94.0 / 255, blue: 170.0 / 255, alpha: 1)
+
         carbonTabSwipeNavigation.toolbar.translucent = false
         carbonTabSwipeNavigation.setIndicatorColor(color)
         
@@ -54,6 +50,10 @@ class GitHubViewController: UIViewController {
         carbonTabSwipeNavigation.setNormalColor(UIColor.blackColor().colorWithAlphaComponent(0.6))
         carbonTabSwipeNavigation.setSelectedColor(color, font: UIFont.boldSystemFontOfSize(15))
         
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
 }
 

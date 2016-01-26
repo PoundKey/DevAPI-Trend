@@ -26,7 +26,6 @@ class CocoaPodViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = "CocoaPods"
         initViewList()
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -39,6 +38,7 @@ class CocoaPodViewController: UIViewController {
     }
     
     func initViewList() {
+        self.setNeedsStatusBarAppearanceUpdate()
         self.tableView.registerNib(UINib(nibName: "DevCell", bundle:nil), forCellReuseIdentifier: "cell")
         self.tableView.headerView = createHeaderRefreshControl(self, action: "reloadHTML")
         SVProgressHUD.show()
@@ -102,6 +102,10 @@ class CocoaPodViewController: UIViewController {
                     }
             }
         }
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
  
 }

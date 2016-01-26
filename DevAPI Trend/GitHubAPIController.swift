@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SVProgressHUD
 
 class GitHubAPIController: UIViewController {
     
@@ -107,6 +108,10 @@ class GitHubAPIController: UIViewController {
         controller.request = NSURLRequest(URL: url!)
         controller.hidesBottomBarWhenPushed = true
         controller.title = cell.title.text
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
 }
 
